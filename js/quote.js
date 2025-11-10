@@ -1,0 +1,84 @@
+// Read params and fill summary
+const qp = new URLSearchParams(window.location.search);
+const mapName = {
+  one: 'Aluminum Foil Rolls (AL-FR)',
+  two: 'Aluminum Foil Sheets (AL-FS)',
+  three: 'Aluminum Cushion Foil (AL-CF)',
+  four: 'Aluminum Foil Trays - Rectangular (AL-FT-RCT)',
+  five: 'Aluminum Foil Trays - Round (AL-FT-RND)',
+  six: 'Aluminum Tray Lids - Rectangular (AL-FT-RCT-LD)'
+};
+
+const product = qp.get('product') || '';
+const length = qp.get('length') || '';
+const width = qp.get('width') || '';
+const thickness = qp.get('thickness') || '';
+
+// Populate minimal product-only field and hidden fields
+const productNameEl = document.getElementById('productName');
+const lengthEl = document.getElementById('length');
+const widthEl = document.getElementById('width');
+const thicknessEl = document.getElementById('thickness');
+
+if (productNameEl) productNameEl.value = mapName[product] || 'Selected Product';
+if (lengthEl) lengthEl.value = length;
+if (widthEl) widthEl.value = width;
+if (thicknessEl) thicknessEl.value = thickness;
+
+function buildProductUrl() {
+  const url = new URL('product.html', window.location.origin + window.location.pathname.replace(/[^/]*$/, ''));
+  const p = product;
+  if (p) url.searchParams.set('product', p);
+  const l = length;
+  const w = width;
+  const t = thickness;
+  if (l) url.searchParams.set('length', l);
+  if (w) url.searchParams.set('width', w);
+  if (t) url.searchParams.set('thickness', t);
+  return url;
+}
+
+// Back links
+const back = document.getElementById('backToProduct');
+if (back) back.href = buildProductUrl().toString();
+const back2 = document.getElementById('backToProduct2');
+if (back2) back2.href = buildProductUrl().toString();
+
+// Submit the form to PHP
+document.getElementById('quoteForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const params = new URLSearchParams();
+  params.set('productName', productNameEl?.value || '');
+  params.set('length', lengthEl?.value || '');
+  params.set('width', widthEl?.value || '');
+  params.set('thickness', thicknessEl?.value || '');
+  params.set('company', document.getElementById('company')?.value || '');
+  params.set('name', document.getElementById('name')?.value || '');
+  params.set('email', document.getElementById('email')?.value || '');
+  params.set('phone', document.getElementById('phone')?.value || '');
+  params.set('datasheet', document.querySelector('input[name="datasheet"]:checked')?.value || 'no');
+  params.set('notes', document.getElementById('notes')?.value || '');
+  params.set('customDetails', document.getElementById('customDetails')?.value || '');
+
+  try {
+    const res = await fetch('process-quote.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString(),
+    });
+    const data = await res.json().catch(() => null);
+    if (res.ok && data?.success) {
+      alert('Thanks! Your request has been sent successfully.');
+      const formEl = e.target;
+      if (formEl && typeof formEl.reset === 'function') { formEl.reset(); }
+      if (productNameEl) productNameEl.value = mapName[product] || '';
+      if (lengthEl) lengthEl.value = length;
+      if (widthEl) widthEl.value = width;
+      if (thicknessEl) thicknessEl.value = thickness;
+    } else {
+      alert((data && data.message) || 'Sorry, there was an error sending your request.');
+    }
+  } catch (err) {
+    alert('Network error. Please try again later.');
+  }
+});

@@ -1,0 +1,613 @@
+/* Brand variables and base */
+:root {
+    /* Enhanced brand palette */
+    --primary: #252e57;
+    --primary-light: #3a4570;
+    --primary-dark: #1a2142;
+    --secondary: #39437a;
+    --secondary-light: #4d5a8f;
+    --accent: #7c83b7;
+    --accent-light: #9ba3d1;
+    --light: #f8fafc;
+    --light-blue: #f1f5f9;
+    --dark: #1e293b;
+    --gray: #64748b;
+    --gray-light: #94a3b8;
+    --border: #e2e8f0;
+    --shadow: 0 4px 6px rgba(37, 46, 87, 0.1);
+    --shadow-lg: 0 10px 25px rgba(37, 46, 87, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+
+    /* Back-compat with existing styles */
+    --brand-primary: var(--primary);
+    --brand-dark: var(--dark);
+    --brand-accent: var(--accent);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--light);
+}
+
+/* Bootstrap key overrides */
+.btn-primary {
+    background: var(--gradient-primary);
+    border: none;
+    box-shadow: 0 2px 4px rgba(37, 46, 87, 0.2);
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: transparent;
+    transition: var(--transition);
+}
+
+.btn-outline-primary:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.btn-outline-secondary {
+    color: var(--gray);
+    border-color: var(--border);
+    background: white;
+    transition: var(--transition);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--light-blue);
+    border-color: var(--accent);
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: 0 2px 10px rgba(37, 46, 87, 0.08);
+}
+
+/* Navbar refinement */
+.navbar {
+    padding: 0.6rem 1rem;
+}
+
+.brand-text {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.05rem;
+}
+
+.navbar .navbar-toggler {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    width: 48px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Show burger toggler on desktop as well */
+.navbar .navbar-toggler {
+    display: flex !important;
+    /* override Bootstrap hiding on larger screens */
+}
+
+/* Ensure toggler doesn't push content on large screens */
+@media (min-width: 992px) {
+    .navbar .navbar-toggler {
+        margin-left: 0.5rem;
+        background: white;
+    }
+}
+
+.navbar .navbar-toggler-icon {
+    background-image: none !important;
+}
+
+.navbar .navbar-toggler .fa-bars {
+    color: var(--primary);
+    font-size: 1.05rem;
+}
+
+.navbar .nav-link {
+    padding: 0.5rem 0.75rem;
+    color: var(--dark);
+}
+
+.navbar .nav-link:hover {
+    color: var(--primary);
+    background: rgba(13, 110, 253, 0.06);
+    border-radius: 6px;
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+.navbar-brand {
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-brand:hover {
+    color: var(--secondary);
+}
+
+.navbar-brand img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+.navbar .nav-link {
+    transition: var(--transition);
+    font-weight: 500;
+    position: relative;
+}
+
+.navbar .nav-link:hover {
+    color: var(--primary);
+}
+
+.navbar .nav-link.active {
+    color: var(--primary) !important;
+    font-weight: 600;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+/* .navbar .nav-link:hover::after, */
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
+/* Responsive logo */
+@media (max-width: 576px) {
+    .navbar-brand img {
+        height: 32px;
+    }
+}
+
+/* Hero Banner styles */
+.hero-banner {
+    min-height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* basic parallax */
+    position: relative;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(37, 46, 87, 0.7) 0%, rgba(57, 67, 122, 0.6) 100%);
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    padding: 0 1rem;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary);
+}
+
+.swiper-pagination {
+    position: relative;
+    margin-top: 26px;
+    /* push pagination a little below the cards */
+    z-index: 50;
+    /* make sure bullets render above card shadows */
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.swiper-pagination-bullet {
+    opacity: 0.95;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--gradient-primary);
+    transform: scale(1.05);
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.banner-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA uses Bootstrap .btn now */
+
+/* Products Section styles */
+.products-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, var(--light) 0%, var(--light-blue) 100%);
+    position: relative;
+}
+
+.products-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-accent);
+}
+
+.products-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary);
+    font-weight: 700;
+    position: relative;
+}
+
+.products-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Bootstrap cards get a subtle hover */
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-light);
+}
+
+.card-body {
+    background: linear-gradient(180deg, white 0%, var(--light) 100%);
+}
+
+.card-title {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.card-text {
+    color: var(--gray);
+}
+
+.card-img-top {
+    height: 182px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    flex-grow: 1;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+/* Make product cards equal height in Swiper */
+.swiper-wrapper {
+    align-items: stretch;
+}
+
+.swiper-slide {
+    display: flex;
+    height: auto;
+}
+
+.swiper-slide>.card {
+    width: 100%;
+}
+
+.card-title {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Swiper styles */
+.swiper-container {
+    padding: 2rem 1rem;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary);
+    background: white;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    width: 44px;
+    height: 44px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: var(--light-blue);
+    transform: scale(1.1);
+}
+
+.swiper-pagination-bullet {
+    background: var(--gray-light);
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--gradient-primary);
+    transform: scale(1.2);
+}
+
+/* AOS default leaves no custom CSS required */
+
+/* Inner page smaller hero */
+.hero-sm {
+    min-height: 60vh;
+}
+
+/* Quote page aside image and right-column layout */
+/* Make the right column a vertical flex container; image and panel can share available height */
+.col-lg-5.d-flex.flex-column {
+    /* ensure that child flex items can shrink properly */
+    min-height: 0;
+}
+
+.aside-image {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    /* allow the image to grow/shrink inside the flex column */
+    flex: 1 1 50%;
+    min-height: 0;
+}
+
+.col-lg-5 .company-panel {
+    /* make the company panel take remaining space and allow internal scrolling if needed */
+    flex: 1 1 50%;
+    min-height: 0;
+    overflow: auto;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .banner-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .banner-content p {
+        font-size: 1rem;
+    }
+
+    .products-section {
+        padding: 2rem 1rem;
+    }
+
+    .products-section h2 {
+        font-size: 2rem;
+    }
+}
+
+/* About Section Enhancement */
+#about {
+    background: white;
+    border-top: 1px solid var(--border);
+}
+
+#about h2 {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+#about ul li {
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+#about ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* CTA Section Enhancement */
+.bg-primary {
+    background: var(--gradient-primary) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
+    background-size: 50px 50px;
+}
+
+.bg-primary .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer Enhancement */
+footer.bg-dark {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%) !important;
+    border-top: 3px solid var(--accent);
+}
+
+/* Form Elements */
+.form-select,
+.form-control {
+    border-color: var(--border);
+    transition: var(--transition);
+}
+
+.form-select:focus,
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(124, 131, 183, 0.25);
+}
+
+/* Tab Enhancement */
+.nav-tabs .nav-link {
+    color: var(--gray);
+    border-color: transparent;
+    transition: var(--transition);
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary);
+    border-color: var(--border);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary);
+    background: white;
+    border-color: var(--border) var(--border) white;
+    font-weight: 600;
+}
+
+.tab-content {
+    background: white;
+    border: 1px solid var(--border);
+}
+
+/* Table Enhancement */
+.table th {
+    background: var(--light-blue);
+    color: var(--primary);
+    font-weight: 600;
+    border-color: var(--border);
+}
+
+.table td {
+    color: var(--gray);
+    border-color: var(--border);
+}
+
+/* Breadcrumb Enhancement */
+.breadcrumb-item a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary);
+}
+
+.breadcrumb-item.active {
+    color: var(--gray);
+}
+
+
+/* Hide hamburger menu on desktop */
+@media (min-width: 992px) {
+    .navbar .navbar-toggler {
+        display: none !important;
+    }
+}
+
+/* Remove default list markers globally (no bullets/numbers) */
+ul,
+ol {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}

@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Quote</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-semibold text-primary" href="index.html">
+        <img src="https://sreeveegroup.com/assets/brand/SreeVee-new-logo.png" alt="SreeVee"
+          style="height:60px; width:auto;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-banner hero-sm position-relative d-flex align-items-center"
+    style="background-image: url('https://webpackagingsolutions.com/assets/images/banner/career-page-banner.webp');">
+    <div class="overlay"></div>
+    <div class="container text-white" data-aos="fade-up">
+      <h1 class="display-6 fw-bold mb-0">Request a Quote</h1>
+    </div>
+  </section>
+
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-7" data-aos="fade-right">
+          <div class="card shadow-sm h-100">
+            <div class="card-body p-4 p-md-5">
+              <h1 class="h3 fw-bold mb-3">Your Request</h1>
+              <p class="text-secondary">Review or select product details and share your info. Weâ€™ll respond with
+                pricing
+                or more information based on your selection.</p>
+
+              <div class="row g-3 mt-2 align-items-end d-none">
+                <div class="col-12 col-md-4">
+                  <label class="form-label" for="productSelect">Product</label>
+                  <select id="productSelect" class="form-select">
+                    <option value="">Select a productâ€¦</option>
+                    <option value="one">Product One</option>
+                    <option value="two">Product Two</option>
+                    <option value="three">Product Three</option>
+                    <option value="four">Product Four</option>
+                    <option value="five">Product Five</option>
+                    <option value="six">Product Six</option>
+                    <option value="custom">Custom product</option>
+                  </select>
+                </div>
+                <div class="col-4 col-md-2">
+                  <label class="form-label" for="qLen">Length (ft)</label>
+                  <select id="qLen" class="form-select">
+                    <option value="">â€”</option>
+                    <option>6</option>
+                    <option>8</option>
+                    <option selected>10</option>
+                    <option>12</option>
+                  </select>
+                </div>
+                <div class="col-4 col-md-2">
+                  <label class="form-label" for="qWid">Width (in)</label>
+                  <select id="qWid" class="form-select">
+                    <option value="">â€”</option>
+                    <option>24</option>
+                    <option selected>30</option>
+                    <option>36</option>
+                    <option>48</option>
+                  </select>
+                </div>
+                <div class="col-4 col-md-2">
+                  <label class="form-label" for="qThk">Thickness (Âµ)</label>
+                  <select id="qThk" class="form-select">
+                    <option value="">â€”</option>
+                    <option>40</option>
+                    <option selected>60</option>
+                    <option>80</option>
+                    <option>100</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-2">
+                  <a id="backToProduct" class="btn btn-outline-secondary w-100" href="#">View product</a>
+                </div>
+              </div>
+
+              <!-- Custom specs shown when product=custom -->
+              <div id="customSpecs" class="row g-3 mt-2 d-none">
+                <div class="col-12">
+                  <div class="alert alert-info py-2 mb-0">Provide your custom specification below.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="customDetails">Custom details</label>
+                  <textarea id="customDetails" class="form-control" rows="3"
+                    placeholder="Describe size, thickness, material, usage, etc."></textarea>
+                </div>
+              </div>
+
+              <form class="mt-4" id="quoteForm" action="process-quote.php" method="POST">
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label" for="productName">Product</label>
+                    <input class="form-control" id="productName" name="productName" readonly>
+                    <input type="hidden" id="length" name="length">
+                    <input type="hidden" id="width" name="width">
+                    <input type="hidden" id="thickness" name="thickness">
+                  </div>
+                  <div class="col-md-6">
+                    <!-- <label class="form-label" for="company">Company</label> -->
+                    <input class="form-control" id="company" name="company" placeholder="Company">
+                  </div>
+                  <div class="col-md-6">
+                    <!-- <label class="form-label" for="name">Full Name</label> -->
+                    <input class="form-control" id="name" name="name" placeholder="Full Name">
+                  </div>
+                  <div class="col-md-6">
+                    <!-- <label class="form-label" for="email">Email</label> -->
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                  </div>
+                  <div class="col-md-6">
+                    <!-- <label class="form-label" for="phone">Phone (optional)</label> -->
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone (optional)">
+                  </div>
+
+
+
+                  <div class="col-12">
+                    <label class="form-label d-block">Request datasheet?</label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="datasheet" id="dsNo" value="no" checked>
+                      <label class="form-check-label" for="dsNo">No</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="datasheet" id="dsYes" value="yes">
+                      <label class="form-check-label" for="dsYes">Yes</label>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="notes">Additional Notes</label>
+                    <textarea class="form-control" id="notes" name="notes" rows="3"
+                      placeholder="Tell us about quantity, delivery timelines, or custom needs."></textarea>
+                  </div>
+                </div>
+
+                <div class="d-grid d-sm-flex gap-3 mt-4">
+                  <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
+                  <a id="backToProduct2" class="btn btn-outline-secondary btn-lg" href="#">Back to Product</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5" data-aos="fade-left">
+          <div class="d-flex flex-column">
+            <div class="rounded overflow-hidden mb-3">
+              <img src="assets/images/foil-img.jpg" alt="SreeVee products" class="w-100 h-50 object-fit-cover">
+            </div>
+            <div class="p-4 bg-light rounded">
+              <h2 class="h5">Company</h2>
+              <p class="mb-1">SreeVee Packaging Solutions</p>
+              <p class="mb-1">Email: info@example.com</p>
+              <p class="mb-3">Phone: +1 555 000 1234</p>
+              <hr>
+              <h2 class="h6">Office</h2>
+              <p class="mb-1">123 Industrial Park</p>
+              <p class="mb-1">City, State, ZIP</p>
+              <hr>
+              <h2 class="h6">Hours</h2>
+              <p class="mb-0">Mon–Fri: 9:00–18:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- CTA -->
+  <section class="py-5 bg-primary text-white mt-5">
+    <div class="container text-center" data-aos="zoom-in">
+      <h3 class="fw-semibold mb-2">Have a custom requirement?</h3>
+      <p class="mb-4">We can help you match the right foil, tray, or lid.</p>
+      <a href="products.html" class="btn btn-light btn-lg">Browse Products</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <div>
+        <strong>SreeVee</strong> &middot; Packaging Solutions
+      </div>
+      <div class="text-secondary">&copy; <span id="year"></span> SreeVee. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/quote.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if (window.AOS) AOS.init({ duration: 600, once: true });
+  </script>
+</body>
+
+</html>
