@@ -47,6 +47,26 @@ if (back2) back2.href = buildProductUrl().toString();
 // Submit the form to PHP
 document.getElementById('quoteForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
+
+  // Basic validation for Customer Information
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const companyInput = document.getElementById('company');
+  const clearInvalid = (el) => el && el.classList.remove('is-invalid');
+  const setInvalid = (el) => el && el.classList.add('is-invalid');
+  [nameInput, emailInput, companyInput].forEach(clearInvalid);
+
+  const errors = [];
+  const nameVal = nameInput?.value?.trim() || '';
+  const emailVal = emailInput?.value?.trim() || '';
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+  if (!nameVal) { setInvalid(nameInput); errors.push('Full Name'); }
+  if (!emailOk) { setInvalid(emailInput); errors.push('Valid Email'); }
+
+  if (errors.length) {
+    alert('Please provide the following before submitting: ' + errors.join(', '));
+    return;
+  }
   const params = new URLSearchParams();
   params.set('productName', productNameEl?.value || '');
   params.set('length', lengthEl?.value || '');

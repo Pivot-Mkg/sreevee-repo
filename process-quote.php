@@ -49,6 +49,78 @@ if ($product !== "Custom product") {
                  <p>" . nl2br(htmlspecialchars($customDetails)) . "</p>";
 }
 
+$code = null;
+if (preg_match('/\((AL-[A-Z\-]+)\)/', $product, $m)) { $code = $m[1]; }
+// Build a simple catalog map for SKU matching
+function num($v) { if ($v === '' || $v === null) return null; return is_numeric($v) ? (float)$v : null; }
+$lenV = num($length); $widV = num($width); $thkV = num($thickness);
+$catalog = [
+  'AL-FR' => [
+    ['sku'=>'AL-FR-01','length'=>1000,'width'=>12,'thickness'=>12],
+    ['sku'=>'AL-FR-02','length'=>1000,'width'=>12,'thickness'=>14],
+    ['sku'=>'AL-FR-03','length'=>1000,'width'=>12,'thickness'=>16],
+    ['sku'=>'AL-FR-04','length'=>1000,'width'=>18,'thickness'=>14],
+    ['sku'=>'AL-FR-05','length'=>1000,'width'=>18,'thickness'=>16],
+    ['sku'=>'AL-FR-06','length'=>1000,'width'=>18,'thickness'=>17],
+    ['sku'=>'AL-FR-07','length'=>1000,'width'=>18,'thickness'=>24],
+    ['sku'=>'AL-FR-08','length'=>1000,'width'=>24,'thickness'=>21],
+    ['sku'=>'AL-FR-09','length'=>500,'width'=>12,'thickness'=>23],
+    ['sku'=>'AL-FR-10','length'=>500,'width'=>18,'thickness'=>14],
+    ['sku'=>'AL-FR-11','length'=>500,'width'=>18,'thickness'=>16],
+    ['sku'=>'AL-FR-12','length'=>500,'width'=>18,'thickness'=>18],
+    ['sku'=>'AL-FR-13','length'=>500,'width'=>18,'thickness'=>20],
+    ['sku'=>'AL-FR-14','length'=>500,'width'=>18,'thickness'=>24],
+  ],
+  'AL-FS' => [
+    ['sku'=>'AL-FS-01','length'=>9,'width'=>10.75,'thickness'=>12],
+    ['sku'=>'AL-FS-02','length'=>9,'width'=>10.75,'thickness'=>14],
+    ['sku'=>'AL-FS-03','length'=>12,'width'=>10.75,'thickness'=>14],
+    ['sku'=>'AL-FS-04','length'=>12,'width'=>10.75,'thickness'=>16],
+  ],
+  'AL-CF' => [
+    ['sku'=>'AL-CF-01','length'=>14,'width'=>10.75,'thickness'=>16],
+    ['sku'=>'AL-CF-02','length'=>14,'width'=>16,'thickness'=>16],
+  ],
+  // Rectangular trays (use Max Length/Width and Thickness)
+  'AL-FT-RCT' => [
+    ['sku'=>'AL-FT-RCT-01','length'=>20.7,'width'=>12.9,'thickness'=>154],
+    ['sku'=>'AL-FT-RCT-02','length'=>20.7,'width'=>12.9,'thickness'=>140],
+    ['sku'=>'AL-FT-RCT-03','length'=>20.7,'width'=>12.9,'thickness'=>154],
+    ['sku'=>'AL-FT-RCT-04','length'=>12.6,'width'=>10.6,'thickness'=>94],
+    ['sku'=>'AL-FT-RCT-05','length'=>12.6,'width'=>10.6,'thickness'=>84],
+    ['sku'=>'AL-FT-RCT-06','length'=>12.6,'width'=>10.6,'thickness'=>107],
+    ['sku'=>'AL-FT-RCT-07','length'=>12.6,'width'=>10.6,'thickness'=>110],
+    ['sku'=>'AL-FT-RCT-08','length'=>6.125,'width'=>3.75,'thickness'=>82],
+  ],
+  // Round trays (Diameter, Depth, Thickness) mapped to length, width, thickness
+  'AL-FT-RND' => [
+    ['sku'=>'AL-FT-RND-01','length'=>7,'width'=>1.6,'thickness'=>60],
+    ['sku'=>'AL-FT-RND-02','length'=>7,'width'=>1.6,'thickness'=>85],
+    ['sku'=>'AL-FT-RND-03','length'=>8,'width'=>1.6,'thickness'=>78],
+    ['sku'=>'AL-FT-RND-04','length'=>9,'width'=>1.8,'thickness'=>81],
+    ['sku'=>'AL-FT-RND-05','length'=>9,'width'=>1.8,'thickness'=>65],
+  ],
+  // Rectangular lids (use Max Length/Width and Thickness)
+  'AL-FT-RCT-LD' => [
+    ['sku'=>'AL-FT-RCT-LD-01','length'=>21.3,'width'=>13.3,'thickness'=>103],
+    ['sku'=>'AL-FT-RCT-LD-02','length'=>13,'width'=>10.7,'thickness'=>85],
+    ['sku'=>'AL-FT-RCT-LD-03','length'=>20.6,'width'=>12.8,'thickness'=>60],
+    ['sku'=>'AL-FT-RCT-LD-04','length'=>12.7,'width'=>10.4,'thickness'=>85],
+  ],
+];
+
+$matchedSku = 'Custom product';
+if ($code && isset($catalog[$code]) && $lenV !== null && $widV !== null && $thkV !== null) {
+    foreach ($catalog[$code] as $item) {
+        if (abs($item['length'] - $lenV) < 0.0001 && abs($item['width'] - $widV) < 0.0001 && abs($item['thickness'] - $thkV) < 0.0001) {
+            $matchedSku = $item['sku'];
+            break;
+        }
+    }
+}
+
+$message .= "<p class='label'>SKU:</p><p>" . htmlspecialchars($matchedSku) . "</p>";
+
 $message .= "
       </div>
       <div class='section'>
@@ -110,6 +182,7 @@ if ($email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
     } else if ($customDetails) {
         $userMsg .= "<p>Custom specifications:</p><p>" . nl2br(htmlspecialchars($customDetails)) . "</p>";
     }
+    $userMsg .= "<p>SKU: " . htmlspecialchars($matchedSku) . "</p>";
     $userMsg .= "<p>Datasheet Requested: " . ($datasheet == 'yes' ? 'Yes' : 'No') . "</p>
         </div>
       </div>
@@ -133,4 +206,3 @@ if ($mailSent) {
 } else {
     echo json_encode(['success' => false, 'message' => 'Sorry, there was an error sending your request. Please try again later.']);
 }
-
