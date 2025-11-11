@@ -233,7 +233,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(37, 46, 87, 0.7) 0%, rgba(57, 67, 122, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .banner-content {
@@ -250,7 +250,7 @@ body {
 
 .swiper-pagination {
     position: relative;
-    margin-top: 26px;
+    margin-top: 40px;
     /* push pagination a little below the cards */
     z-index: 50;
     /* make sure bullets render above card shadows */
@@ -301,12 +301,13 @@ body {
 }
 
 .products-section h2 {
-    text-align: center;
+    text-align: left;
     margin-bottom: 3rem;
     font-size: 2.5rem;
     color: var(--primary);
     font-weight: 700;
     position: relative;
+
 }
 
 .products-section h2::after {
@@ -319,6 +320,12 @@ body {
     background: var(--gradient-primary);
     transform: translateX(-50%);
     border-radius: 2px;
+    display: none;
+}
+
+#products .container {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Bootstrap cards get a subtle hover */
@@ -345,7 +352,8 @@ body {
 
 .card-title {
     color: var(--primary);
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-size: 18px;
 }
 
 .card-text {
@@ -372,6 +380,12 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-bottom: 1rem;
+}
+
+/* Ensure consistent spacing between spec and button in product cards */
+.card-body small {
+    display: block;
+    margin-bottom: 1rem !important;
 }
 
 /* Make product cards equal height in Swiper */
@@ -602,6 +616,10 @@ footer.bg-dark {
     .navbar .navbar-toggler {
         display: none !important;
     }
+
+    .navbar-nav {
+        gap: 30px;
+    }
 }
 
 /* Remove default list markers globally (no bullets/numbers) */
@@ -610,4 +628,51 @@ ol {
     list-style: none;
     padding-left: 0;
     margin-left: 0;
+}
+
+/* Inline notifications */
+#notices {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1080;
+    max-width: 90vw;
+}
+
+.notice {
+    min-width: 350px;
+    max-width: min(90vw, 600px);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(37, 46, 87, 0.3);
+    padding: 1.25rem 1.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notice.success {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.notice.error {
+    background: linear-gradient(135deg, #dc3545 0%, #bb2d3b 100%);
 }

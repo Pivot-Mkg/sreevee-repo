@@ -282,7 +282,7 @@ const productData = {
     },
   },
   four: {
-    name: "Aluminum Foil Trays – Rectangular (AL-FT-RCT)",
+    name: "Aluminum Foil Trays - Rectangular (AL-FT-RCT)",
     desc: "Rectangular aluminum steam pans and loaf pans in multiple gauges.",
     images: [
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
@@ -403,7 +403,7 @@ const productData = {
     },
   },
   five: {
-    name: "Aluminum Foil Trays – Round (AL-FT-RND)",
+    name: "Aluminum Foil Trays - Round (AL-FT-RND)",
     desc: "Round aluminum pans in 7, 8, and 9 inch sizes.",
     images: [
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
@@ -482,7 +482,7 @@ const productData = {
     },
   },
   six: {
-    name: "Aluminum Tray Lids – Rectangular (AL-FT-RCT-LD)",
+    name: "Aluminum Tray Lids - Rectangular (AL-FT-RCT-LD)",
     desc: "Aluminum foil lids for full and half steam pans.",
     images: [
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
@@ -559,7 +559,7 @@ const productData = {
 const data = productData[productKey] || productData.one;
 
 // Populate details
-document.title = `${data.name} – SreeVee`;
+document.title = `${data.name} - SreeVee`;
 document.getElementById("productName").textContent = data.name;
 document.getElementById("crumbName").textContent = data.name;
 document.getElementById("productDesc").textContent = data.desc;

@@ -6,7 +6,8 @@ const mapName = {
   three: 'Aluminum Cushion Foil (AL-CF)',
   four: 'Aluminum Foil Trays - Rectangular (AL-FT-RCT)',
   five: 'Aluminum Foil Trays - Round (AL-FT-RND)',
-  six: 'Aluminum Tray Lids - Rectangular (AL-FT-RCT-LD)'
+  six: 'Aluminum Tray Lids - Rectangular (AL-FT-RCT-LD)',
+  custom: 'Custom Product Request'
 };
 
 const product = qp.get('product') || '';
@@ -48,6 +49,33 @@ if (back2) back2.href = buildProductUrl().toString();
 document.getElementById('quoteForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
 
+  // Notification helper
+  const ensureNoticeHost = () => {
+    let host = document.getElementById('notices');
+    if (!host) {
+      host = document.createElement('div');
+      host.id = 'notices';
+      host.setAttribute('aria-live', 'polite');
+      document.body.appendChild(host);
+    }
+    return host;
+  };
+  const notify = (message, type = 'success') => {
+    const host = ensureNoticeHost();
+    const el = document.createElement('div');
+    el.className = `notice ${type}`;
+    el.innerHTML = `
+      <div class="d-flex align-items-start gap-2">
+        <div class="flex-grow-1">${message}</div>
+        <button type="button" class="btn-close" aria-label="Close"></button>
+      </div>
+    `;
+    const btn = el.querySelector('button');
+    btn?.addEventListener('click', () => el.remove());
+    host.appendChild(el);
+    setTimeout(() => el.remove(), 5000);
+  };
+
   // Basic validation for Customer Information
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
@@ -64,7 +92,7 @@ document.getElementById('quoteForm')?.addEventListener('submit', async (e) => {
   if (!emailOk) { setInvalid(emailInput); errors.push('Valid Email'); }
 
   if (errors.length) {
-    alert('Please provide the following before submitting: ' + errors.join(', '));
+    notify('Please provide: ' + errors.join(', '), 'error');
     return;
   }
   const params = new URLSearchParams();
@@ -88,7 +116,7 @@ document.getElementById('quoteForm')?.addEventListener('submit', async (e) => {
     });
     const data = await res.json().catch(() => null);
     if (res.ok && data?.success) {
-      alert('Thanks! Your request has been sent successfully.');
+      notify('Thanks! Your request has been sent successfully.', 'success');
       const formEl = e.target;
       if (formEl && typeof formEl.reset === 'function') { formEl.reset(); }
       if (productNameEl) productNameEl.value = mapName[product] || '';
@@ -96,9 +124,9 @@ document.getElementById('quoteForm')?.addEventListener('submit', async (e) => {
       if (widthEl) widthEl.value = width;
       if (thicknessEl) thicknessEl.value = thickness;
     } else {
-      alert((data && data.message) || 'Sorry, there was an error sending your request.');
+      notify((data && data.message) || 'Sorry, there was an error sending your request.', 'error');
     }
   } catch (err) {
-    alert('Network error. Please try again later.');
+    notify('Network error. Please try again later.', 'error');
   }
 });
