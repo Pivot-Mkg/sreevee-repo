@@ -7,6 +7,11 @@ const mapName = {
   four: 'Aluminum Foil Trays - Rectangular (AL-FT-RCT)',
   five: 'Aluminum Foil Trays - Round (AL-FT-RND)',
   six: 'Aluminum Tray Lids - Rectangular (AL-FT-RCT-LD)',
+  // Compostable categories
+  cptc: 'Compostable Take-Out Containers (CP-TC)',
+  cppt: 'Compostable Plates (CP-PT)',
+  cpbl: 'Compostable Bowls (CP-BL)',
+  ptld: 'PET Lids (PT-LD)',
   custom: 'Custom Product Request'
 };
 

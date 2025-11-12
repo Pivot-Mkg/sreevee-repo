@@ -40,7 +40,28 @@ $message = "<!DOCTYPE html><html><head><meta charset='UTF-8'><style>
         <p class='label'>Product Details:</p>
         <p>Product: " . htmlspecialchars($product) . "</p>";
 
-if ($product !== "Custom product") {
+// New: derive family and render appropriate fields
+$code_all = null;
+if (preg_match('/\(([A-Z0-9\-]+)\)/', (string)$product, $mAll)) {
+  $code_all = $mAll[1];
+}
+$isCompostable = $code_all && (strpos($code_all, 'CP-') === 0 || $code_all === 'PT-LD');
+$isCustom = stripos((string)$product, 'custom') !== false;
+
+$l1 = $isCompostable ? 'Material' : 'Length';
+$l2 = $isCompostable ? 'Shape' : 'Width';
+$l3 = $isCompostable ? 'Case Quantity' : 'Thickness (&micro;m)';
+
+if (!$isCustom) {
+  $message .= "<p>" . $l1 . ": " . htmlspecialchars($length) . "</p>\n"
+    .  "                 <p>" . $l2 . ": " . htmlspecialchars($width) . "</p>\n"
+    .  "                 <p>" . $l3 . ": " . htmlspecialchars($thickness) . "</p>";
+} else {
+  $message .= "<p>Custom Specifications:</p>\n"
+    .  "                 <p>" . nl2br(htmlspecialchars($customDetails)) . "</p>";
+}
+
+/* if ($product !== "Custom product") {
   $message .= "<p>Length: " . htmlspecialchars($length) . "</p>
                  <p>Width: " . htmlspecialchars($width) . "</p>
                  <p>Thickness: " . htmlspecialchars($thickness) . " μm</p>";
@@ -48,7 +69,7 @@ if ($product !== "Custom product") {
   $message .= "<p>Custom Specifications:</p>
                  <p>" . nl2br(htmlspecialchars($customDetails)) . "</p>";
 }
-
+*/
 $code = null;
 if (preg_match('/\((AL-[A-Z\-]+)\)/', $product, $m)) {
   $code = $m[1];
@@ -127,6 +148,52 @@ if ($code && isset($catalog[$code]) && $lenV !== null && $widV !== null && $thkV
   }
 }
 
+// Match SKU for compostable families using Material, Shape, Case Quantity
+if ($isCompostable && $matchedSku === 'Custom product') {
+  $cp_code = $code_all; // e.g., CP-TC, CP-PT, CP-BL, PT-LD
+  $matV = is_string($length) ? strtolower(trim($length)) : '';
+  $shapeV = is_string($width) ? strtolower(trim($width)) : '';
+  $caseV = is_numeric($thickness) ? (float)$thickness : null;
+
+  $cp_catalog = [
+    'CP-TC' => [
+      ['sku' => 'CP-TC-02', 'material' => 'bagasse fiber (sugarcane)', 'shape' => 'square',      'caseQuantity' => 200],
+      ['sku' => 'CP-TC-03', 'material' => 'bagasse fiber (sugarcane)', 'shape' => 'square',      'caseQuantity' => 200],
+      ['sku' => 'CP-TC-04', 'material' => 'plant fiber',               'shape' => 'square',      'caseQuantity' => 200],
+      ['sku' => 'CP-TC-05', 'material' => 'plant fiber',               'shape' => 'rectangular', 'caseQuantity' => 250],
+      ['sku' => 'CP-TC-14', 'material' => 'mineral-filled polypropylene (mfpp)', 'shape' => 'square', 'caseQuantity' => 120],
+    ],
+    'CP-PT' => [
+      ['sku' => 'CP-PT-01', 'material' => 'pulp fiber',    'shape' => 'round', 'caseQuantity' => 1000],
+      ['sku' => 'CP-PT-03', 'material' => 'pulp fiber',    'shape' => 'round', 'caseQuantity' => 500],
+      ['sku' => 'CP-PT-07', 'material' => 'pulp fiber',    'shape' => 'round', 'caseQuantity' => 500],
+      ['sku' => 'CP-PT-10', 'material' => 'pulp fiber',    'shape' => 'oval',  'caseQuantity' => 500],
+      ['sku' => 'CP-PT-11', 'material' => 'pulp fiber',    'shape' => 'oval',  'caseQuantity' => 500],
+      ['sku' => 'CP-PT-13', 'material' => 'bagasse fiber', 'shape' => 'round', 'caseQuantity' => 500],
+    ],
+    'CP-BL' => [
+      ['sku' => 'CP-BL-01', 'material' => 'pulp fiber',                   'shape' => 'round', 'caseQuantity' => 1000],
+      ['sku' => 'CP-BL-03', 'material' => 'bagasse fiber (sugarcane)\nbamboo', 'shape' => 'round', 'caseQuantity' => 1000],
+      ['sku' => 'CP-BL-04', 'material' => 'bagasse fiber (sugarcane)\nbamboo', 'shape' => 'round', 'caseQuantity' => 300],
+      ['sku' => 'CP-BL-05', 'material' => 'bagasse fiber (sugarcane)\nbamboo', 'shape' => 'round', 'caseQuantity' => 250],
+    ],
+    'PT-LD' => [
+      ['sku' => 'PT-LD-01', 'material' => 'pet', 'shape' => 'dome', 'caseQuantity' => 500],
+      ['sku' => 'PT-LD-02', 'material' => 'pet', 'shape' => 'dome', 'caseQuantity' => 300],
+      ['sku' => 'PT-LD-03', 'material' => 'pet', 'shape' => 'flat', 'caseQuantity' => 1000],
+    ],
+  ];
+
+  if ($cp_code && isset($cp_catalog[$cp_code]) && $matV && $shapeV && $caseV !== null) {
+    foreach ($cp_catalog[$cp_code] as $it) {
+      if ($it['material'] === $matV && $it['shape'] === $shapeV && abs($it['caseQuantity'] - $caseV) < 0.0001) {
+        $matchedSku = $it['sku'];
+        break;
+      }
+    }
+  }
+}
+
 $message .= "<p class='label'>SKU:</p><p>" . htmlspecialchars($matchedSku) . "</p>";
 
 $message .= "
@@ -184,13 +251,30 @@ if ($email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
         <div class='section'>
           <p class='label'>Summary</p>
           <p>Product: " . htmlspecialchars($product) . "</p>";
-  if ($product !== "Custom product") {
+  // New: derive family and display appropriate fields
+  $code_all_u = null;
+  if (preg_match('/\(([A-Z0-9\-]+)\)/', (string)$product, $mAllU)) {
+    $code_all_u = $mAllU[1];
+  }
+  $isCompostableU = $code_all_u && (strpos($code_all_u, 'CP-') === 0 || $code_all_u === 'PT-LD');
+  $isCustomU = stripos((string)$product, 'custom') !== false;
+  $l1u = $isCompostableU ? 'Material' : 'Length';
+  $l2u = $isCompostableU ? 'Shape' : 'Width';
+  $l3u = $isCompostableU ? 'Case Quantity' : 'Thickness (&micro;m)';
+  if (!$isCustomU) {
+    $userMsg .= "<p>${l1u}: " . htmlspecialchars($length) . "</p>"
+      .  "<p>${l2u}: " . htmlspecialchars($width) . "</p>"
+      .  "<p>${l3u}: " . htmlspecialchars($thickness) . "</p>";
+  } else if ($customDetails) {
+    $userMsg .= "<p>Custom specifications:</p><p>" . nl2br(htmlspecialchars($customDetails)) . "</p>";
+  }
+  /* if ($product !== "Custom product") {
     $userMsg .= "<p>Length: " . htmlspecialchars($length) . "</p>
                      <p>Width: " . htmlspecialchars($width) . "</p>
                      <p>Thickness: " . htmlspecialchars($thickness) . " μm</p>";
   } else if ($customDetails) {
     $userMsg .= "<p>Custom specifications:</p><p>" . nl2br(htmlspecialchars($customDetails)) . "</p>";
-  }
+  } */
   $userMsg .= "<p>SKU: " . htmlspecialchars($matchedSku) . "</p>";
   $userMsg .= "<p>Datasheet Requested: " . ($datasheet == 'yes' ? 'Yes' : 'No') . "</p>
         </div>
@@ -218,15 +302,39 @@ if ($mailSent) {
 
 // --- Also push to Google Sheets via Apps Script (non-blocking) ---
 // NOTE: Replace the URL below with your deployed Web App URL for this quote form.
-$gs_url = 'https://script.google.com/macros/s/AKfycbyWxkPa38G9DgHrK_BznyxO79Y_EwbC5GAOTrLp1YVJHNI4aQi_Ikr-dQV996oAWfSxuQ/exec';
+$gs_url = 'https://script.google.com/macros/s/AKfycbxA_2YWFsou56-FcwQ1StkAUAFuuuFPyd_uflspHCECczlLcwS0To_DrMzOJfulleAlfQ/exec';
 
 try {
+  // Determine product family and normalize compostable fields
+  $code_all = null;
+  if (preg_match('/\(([A-Z0-9\-]+)\)/', (string)$product, $mm)) {
+    $code_all = $mm[1];
+  }
+  $family = 'unknown';
+  if ($code_all) {
+    if (strpos($code_all, 'AL-') === 0) $family = 'aluminum';
+    if (strpos($code_all, 'CP-') === 0 || $code_all === 'PT-LD') $family = 'compostable';
+  }
+  $material = '';
+  $shape = '';
+  $caseQty = '';
+  if ($family === 'compostable') {
+    $material = $length; // front-end uses length/width/thickness positions
+    $shape = $width;
+    $caseQty = $thickness;
+  }
+
   $payload = [
     'token'         => '123123123', // must match the Apps Script token
+    'family'        => $family,
+    'code'          => $code_all,
     'product'       => $product,
     'length'        => $length,
     'width'         => $width,
     'thickness'     => $thickness,
+    'material'      => $material,
+    'shape'         => $shape,
+    'caseQuantity'  => $caseQty,
     'company'       => $company,
     'name'          => $name,
     'email'         => $email,

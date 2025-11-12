@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,7 +47,6 @@
             <h1 class="display-4 fw-bold mb-3">Empowering Packaging Through Innovation </h1>
             <p class="lead mb-4">SreeVee delivers high-performance web packaging solutions engineered for quality,
                 efficiency, and sustainability across global industries.</p>
-            <a href="#products" class="btn btn-light btn-lg">Explore Now</a>
         </div>
     </section>
 
@@ -100,6 +99,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Product 4 -->
                     <div class="swiper-slide">
                         <div class="card h-100 shadow-sm" data-aos="fade-up" data-aos-delay="300">
@@ -145,10 +145,80 @@
                     </div>
                 </div>
                 <!-- Add Navigation -->
-                <!-- <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div> -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
                 <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination aluminium-pagi"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compostable Products Section -->
+    <section id="compostable" class="products-section py-5 position-relative pb-3">
+        <div class="container overflow-hidden">
+            <h2 class="mb-4 fw-semibold" data-aos="fade-up">Compostable Products</h2>
+            <div class="swiper-container py-2 product-compostable-swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    <!-- Take-Out Containers -->
+                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm" data-aos="fade-up" data-aos-delay="150">
+                            <img class="card-img-top" src="./assets/images/take-out-lids.jpg"
+                                alt="Compostable Take-Out Containers">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="h5 card-title">Compostable Take-Out Containers</h3>
+                                <!-- <small class="text-muted mb-2"><i class="fa-solid fa-seedling me-1"></i> Materials:
+                                    Bagasse, Plant Fiber, MFPP</small> -->
+                                <a class="btn btn-outline-primary mt-auto" href="product.html?product=cptc">View
+                                    Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plates -->
+                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                            <img class="card-img-top" src="./assets/images/plate.jpg" alt="Compostable Plates">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="h5 card-title">Compostable Plates</h3>
+                                <!-- <small class="text-muted mb-2"><i class="fa-solid fa-seedling me-1"></i> Shapes: Round,
+                                    Oval</small> -->
+                                <a class="btn btn-outline-primary mt-auto" href="product.html?product=cppt">View
+                                    Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bowls -->
+                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm" data-aos="fade-up" data-aos-delay="250">
+                            <img class="card-img-top" src="./assets/images/bowls.jpg" alt="Compostable Bowls">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="h5 card-title">Compostable Bowls</h3>
+                                <!-- <small class="text-muted mb-2"><i class="fa-solid fa-seedling me-1"></i> 12oz · 24oz ·
+                                    32oz</small> -->
+                                <a class="btn btn-outline-primary mt-auto" href="product.html?product=cpbl">View
+                                    Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PET Lids -->
+                    <div class="swiper-slide">
+                        <div class="card h-100 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                            <img class="card-img-top" src="./assets/images/lids.jpg" alt="PET Lids">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="h5 card-title">PET Lids</h3>
+                                <!-- <small class="text-muted mb-2"><i class="fa-solid fa-seedling me-1"></i> Clear PET
+                                    Compatible Lids</small> -->
+                                <a class="btn btn-outline-primary mt-auto" href="product.html?product=ptld">View
+                                    Product</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination compostable-pagi"></div>
+
             </div>
         </div>
     </section>
@@ -255,17 +325,15 @@
 
             // Enable pagination
             pagination: {
-                el: ".swiper-pagination",
+                el: ".aluminium-pagi",
                 clickable: true,
             },
 
             // Navigation arrows
-            // navigation: {
-            //     nextEl: ".swiper-button-next",
-            //     prevEl: ".swiper-button-prev",
-            // },
-            navigation: false,
-
+            navigation: {
+                nextEl: ".product-alumium-swiper .swiper-button-next",
+                prevEl: ".product-alumium-swiper .swiper-button-prev",
+            },
             // Responsive breakpoints
             breakpoints: {
                 // when window width is >= 640px
@@ -278,16 +346,79 @@
                 },
                 // when window width is >= 1200px
                 1200: {
-                    slidesPerView: 3.5,
+                    slidesPerView: 4,
                 },
             },
 
             // Auto play (optional)
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
+            // autoplay: {
+            //     delay: 3000,
+            //     disableOnInteraction: false,
+            // },
+            autoplay: false,
         });
+
+        // Hide pagination if all slides fit in view (no overflow)
+        function toggleAluminiumPaginationVisibility(swiper) {
+            const paginationEl = document.querySelector(".aluminium-pagi");
+            if (paginationEl) {
+                const totalSlides = swiper.slides.length;
+                const visibleSlides = swiper.params.slidesPerView;
+                // Hide pagination if there are fewer slides than visible items
+                if (totalSlides <= visibleSlides) {
+                    paginationEl.style.display = "none";
+                } else {
+                    paginationEl.style.display = "flex";
+                }
+            }
+        }
+
+        // Check on init and on resize
+        swiper_alum.on("init", () => toggleAluminiumPaginationVisibility(swiper_alum));
+        swiper_alum.on("resize", () => toggleAluminiumPaginationVisibility(swiper_alum));
+        window.addEventListener("resize", () => toggleAluminiumPaginationVisibility(swiper_alum));
+
+        // Compostable slider
+        const swiper_comp = new Swiper(".product-compostable-swiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            pagination: {
+                el: ".compostable-pagi",
+                clickable: true,
+                dynamicBullets: false,
+            },
+            navigation: {
+                nextEl: ".product-compostable-swiper .swiper-button-next",
+                prevEl: ".product-compostable-swiper .swiper-button-prev",
+            },
+            breakpoints: {
+                640: { slidesPerView: 1 },
+                968: { slidesPerView: 3 },
+                1200: { slidesPerView: 4 },
+            },
+            autoplay: { delay: 3000, disableOnInteraction: false },
+        });
+
+        // Hide pagination if all slides fit in view (no overflow)
+        function togglePaginationVisibility(swiper) {
+            const paginationEl = document.querySelector(".compostable-pagi");
+            if (paginationEl) {
+                const totalSlides = swiper.slides.length;
+                const visibleSlides = swiper.params.slidesPerView;
+                // Hide pagination if there are fewer slides than visible items
+                if (totalSlides <= visibleSlides) {
+                    paginationEl.style.display = "none";
+                } else {
+                    paginationEl.style.display = "flex";
+                }
+            }
+        }
+
+        // Check on init and on resize
+        swiper_comp.on("init", () => togglePaginationVisibility(swiper_comp));
+        swiper_comp.on("resize", () => togglePaginationVisibility(swiper_comp));
+        window.addEventListener("resize", () => togglePaginationVisibility(swiper_comp));
         document.getElementById('year').textContent = new Date().getFullYear();
         if (window.AOS) AOS.init({ duration: 600, once: true });
     </script>

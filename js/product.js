@@ -554,6 +554,343 @@ const productData = {
       ],
     },
   },
+  // Compostable: Take-Out Containers
+  cptc: {
+    name: "Compostable Take-Out Containers (CP-TC)",
+    desc: "Bagasse, plant fiber, MFPP clamshells in multiple sizes and compartments.",
+    images: [
+      "assets/images/take-out-lids.jpg",
+      "assets/images/bowls.jpg",
+      "assets/images/plate.jpg",
+      "assets/images/lids.jpg",
+    ],
+    specs: {
+      columns: [
+        "WPS SKU",
+        "Product Type",
+        "Material",
+        "Shape",
+        "Hinge",
+        "Length (inches)",
+        "Width (inches)",
+        "Height (inches)",
+        "No. of Compartment",
+        "Style",
+        "Color",
+        "Case Quantity",
+        "Weight per piece (g)",
+        "Case Pack",
+      ],
+      rows: [
+        [
+          "CP-TC-02",
+          'Take out container - Square - 8" - 1 Comp - White - Bagasse Fiber',
+          "Bagasse Fiber (Sugarcane)",
+          "Square",
+          "Regular",
+          8,
+          8,
+          3,
+          1,
+          "Clamshell & Hinged",
+          "White",
+          200,
+          37,
+          "4X50",
+        ],
+        [
+          "CP-TC-03",
+          'Take out container - Square - 8" - 3 Comp - White - Bagasse Fiber',
+          "Bagasse Fiber (Sugarcane)",
+          "Square",
+          "Regular",
+          8,
+          8,
+          3,
+          3,
+          "Clamshell & Hinged",
+          "White",
+          200,
+          37,
+          "4X50",
+        ],
+        [
+          "CP-TC-04",
+          'Take out container - Square - 9" - 1 Comp - White - Plant Fiber',
+          "Plant Fiber",
+          "Square",
+          "Regular",
+          9,
+          9,
+          3,
+          1,
+          "Clamshell & Hinged",
+          "White",
+          200,
+          41,
+          "4X50",
+        ],
+        [
+          "CP-TC-05",
+          'Take out container - Rectangular - 9"X6" - 1 Comp - White - Plant Fiber',
+          "Plant Fiber",
+          "Rectangular",
+          "Hoagie Hinged",
+          9,
+          6,
+          3,
+          1,
+          "Clamshell & Hinged",
+          "White",
+          250,
+          30,
+          "5X50",
+        ],
+        [
+          "CP-TC-14",
+          'Take out container - Square - 9" - 3 Comp - White - MFPP',
+          "Mineral-Filled Polypropylene (MFPP)",
+          "Square",
+          "Regular",
+          9,
+          9,
+          3,
+          3,
+          "Clamshell & Hinged",
+          "White",
+          120,
+          60,
+          "120",
+        ],
+      ],
+    },
+  },
+  // Compostable: Plates
+  cppt: {
+    name: "Compostable Plates (CP-PT)",
+    desc: "Round and oval plates in pulp and bagasse, multiple sizes and compartments.",
+    images: [
+      "assets/images/plate.jpg",
+      "assets/images/bowls.jpg",
+      "assets/images/take-out-lids.jpg",
+      "assets/images/lids.jpg",
+    ],
+    specs: {
+      columns: [
+        "WPS SKU",
+        "Product Type",
+        "Material",
+        "Shape",
+        "Length (inches)",
+        "Width (inches)",
+        "No. of Compartment",
+        "Color",
+        "Case Quantity",
+      ],
+      rows: [
+        [
+          "CP-PT-01",
+          'Plate - Round - 6" - 1 Comp - White - 1000 piece - Pulp Fiber',
+          "Pulp Fiber",
+          "Round",
+          6,
+          6,
+          1,
+          "White",
+          1000,
+        ],
+        [
+          "CP-PT-03",
+          'Plate - Round - 9" - 1 Comp - White - 500 piece - Pulp Fiber',
+          "Pulp Fiber",
+          "Round",
+          9,
+          9,
+          1,
+          "White",
+          500,
+        ],
+        [
+          "CP-PT-07",
+          'Plate - Round - 9" - 3 Comp - White - 500 piece - Pulp Fiber',
+          "Pulp Fiber",
+          "Round",
+          9,
+          9,
+          3,
+          "White",
+          500,
+        ],
+        [
+          "CP-PT-10",
+          'Plate - Oval - 7"X10" - 1 Comp - White - 500 piece - Pulp Fiber',
+          "Pulp Fiber",
+          "Oval",
+          7,
+          10,
+          1,
+          "White",
+          500,
+        ],
+        [
+          "CP-PT-11",
+          'Plate - Oval - 7"X10" - 1 Comp - Brown - 500 piece - Pulp Fiber',
+          "Pulp Fiber",
+          "Oval",
+          7,
+          10,
+          1,
+          "Brown",
+          500,
+        ],
+        [
+          "CP-PT-13",
+          'Plate - Round - 9" - 1 Comp - White - 500 piece - Bagasse Fiber',
+          "Bagasse Fiber",
+          "Round",
+          9,
+          9,
+          1,
+          "White",
+          500,
+        ],
+      ],
+    },
+  },
+  // Compostable: Bowls
+  cpbl: {
+    name: "Compostable Bowls (CP-BL)",
+    desc: "Fiber and paper bowls in 12–32 oz with matching lids.",
+    images: [
+      "assets/images/bowls.jpg",
+      "assets/images/plate.jpg",
+      "assets/images/take-out-lids.jpg",
+      "assets/images/lids.jpg",
+    ],
+    specs: {
+      columns: [
+        "WPS SKU",
+        "Product Type",
+        "Material",
+        "Shape",
+        "Height (in)",
+        "Max Width (in)",
+        "Capacity (Oz)",
+        "Color",
+        "No. of Compartment",
+        "Case Quantity",
+      ],
+      rows: [
+        [
+          "CP-BL-01",
+          "Take out bowl - Round - 12oz - White - 1000 piece - Pulp Fiber",
+          "Pulp Fiber",
+          "Round",
+          1.38,
+          6.3,
+          12,
+          "White",
+          1,
+          1000,
+        ],
+        [
+          "CP-BL-03",
+          "Take out bowl - Round - 12oz - Kraft - 1000 piece - Bagasse Fiber",
+          "Bagasse Fiber (Sugarcane)\nBamboo",
+          "Round",
+          1.38,
+          6.3,
+          12,
+          "Kraft",
+          1,
+          1000,
+        ],
+        [
+          "CP-BL-04",
+          "Take out bowl - Round - 24oz - Kraft - 300 piece - Bagasse Fiber",
+          "Bagasse Fiber (Sugarcane)\nBamboo",
+          "Round",
+          2.4,
+          7.2,
+          24,
+          "Kraft",
+          1,
+          300,
+        ],
+        [
+          "CP-BL-05",
+          "Take out bowl - Round - 32oz - Kraft - 250 piece - Bagasse Fiber",
+          "Bagasse Fiber (Sugarcane)\nBamboo",
+          "Round",
+          2.6,
+          8,
+          32,
+          "Kraft",
+          1,
+          250,
+        ],
+      ],
+    },
+  },
+  // PET Lids
+  ptld: {
+    name: "PET Lids (PT-LD)",
+    desc: "Clear PET lids for 12–32 oz bowls and portion cups.",
+    images: [
+      "assets/images/lids.jpg",
+      "assets/images/bowls.jpg",
+      "assets/images/plate.jpg",
+      "assets/images/take-out-lids.jpg",
+    ],
+    specs: {
+      columns: [
+        "WPS SKU",
+        "Product Type",
+        "Material",
+        "Shape",
+        "Height (in)",
+        "Diameter (in)",
+        "Lid Compatible For (Oz)",
+        "Color",
+        "Case Quantity",
+      ],
+      rows: [
+        [
+          "PT-LD-01",
+          'Lid for Bowl - Dome - 5.5" - Clear - 500 piece - PET',
+          "PET",
+          "Dome",
+          1.25,
+          5.5,
+          "12",
+          "Clear",
+          500,
+        ],
+        [
+          "PT-LD-02",
+          'Lid for Bowl - Dome - 8.3" - Clear - 300 piece - PET',
+          "PET",
+          "Dome",
+          1.18,
+          8.3,
+          "24-32",
+          "Clear",
+          300,
+        ],
+        [
+          "PT-LD-03",
+          'Lid for Portion Cup - Flat - 2.3" - Clear - 1000 piece - PET',
+          "PET",
+          "Flat",
+          0.25,
+          "2.375 - 2.625",
+          "2-4",
+          "Clear",
+          1000,
+        ],
+      ],
+    },
+  },
 };
 
 const data = productData[productKey] || productData.one;
@@ -656,6 +993,39 @@ switch (productKey) {
     thkIdx = 5;
     if (lenLabel) lenLabel.textContent = "Diameter (inches)";
     if (widLabel) widLabel.textContent = "Depth (inches)";
+    break;
+  // Compostable families: remap labels to Material/Shape/Case Quantity
+  case "cptc": // Take-out containers
+    lenIdx = 2; // Material
+    widIdx = 3; // Shape
+    thkIdx = 11; // Case Quantity
+    if (lenLabel) lenLabel.textContent = "Material";
+    if (widLabel) widLabel.textContent = "Shape";
+    if (thkLabel) thkLabel.textContent = "Case Quantity";
+    break;
+  case "cppt": // Plates
+    lenIdx = 2; // Material
+    widIdx = 3; // Shape
+    thkIdx = 8; // Case Quantity
+    if (lenLabel) lenLabel.textContent = "Material";
+    if (widLabel) widLabel.textContent = "Shape";
+    if (thkLabel) thkLabel.textContent = "Case Quantity";
+    break;
+  case "cpbl": // Bowls
+    lenIdx = 2; // Material
+    widIdx = 3; // Shape
+    thkIdx = 9; // Case Quantity
+    if (lenLabel) lenLabel.textContent = "Material";
+    if (widLabel) widLabel.textContent = "Shape";
+    if (thkLabel) thkLabel.textContent = "Case Quantity";
+    break;
+  case "ptld": // PET lids
+    lenIdx = 2; // Material
+    widIdx = 3; // Shape
+    thkIdx = 8; // Case Quantity
+    if (lenLabel) lenLabel.textContent = "Material";
+    if (widLabel) widLabel.textContent = "Shape";
+    if (thkLabel) thkLabel.textContent = "Case Quantity";
     break;
   default:
     lenIdx = 2;
