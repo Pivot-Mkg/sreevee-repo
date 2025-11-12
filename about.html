@@ -6,16 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .grid-card img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+  </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
     <div class="container">
       <a class="navbar-brand fw-semibold text-primary" href="index.html">
-        <img src="https://sreeveegroup.com/assets/brand/SreeVee-new-logo.png" alt="SreeVee"
-          style="height:60px; width:auto;">
+        <img src="./assets/images/SVA_logo.png" alt="SreeVee" style="height:60px; width:auto;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
         aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,53 +34,188 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
           <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="get-quote.html?product=custom">Get Quote</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <section class="hero-banner hero-sm position-relative d-flex align-items-center"
-    style="background-image: url('https://source.unsplash.com/1600x900/?aluminum,factory');">
+    style="background-image: url('https://webpackagingsolutions.com/assets/images/banner/career-page-banner.webp');">
     <div class="overlay"></div>
     <div class="container text-white" data-aos="fade-up">
-      <h1 class="display-6 fw-bold mb-0">About SreeVee</h1>
+      <h1 class="display-6 fw-bold mb-0">About</h1>
     </div>
   </section>
 
   <main class="py-5">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-6" data-aos="fade-right">
-          <h2 class="fw-semibold mb-3">Quality Aluminum Packaging</h2>
-          <p class="text-secondary mb-3">We supply aluminum foil rolls, sheets, trays and lids trusted by restaurants,
-            caterers and distributors. Our catalog offers consistent gauges and common sizes with dependable lead times.
+    <section class="py-5">
+
+      <div class="container text-center">
+        <h1>Building Businesses with Purpose. Bridging Continents with Values.</h1>
+        <p>
+          SreeVee Group is a family-limited partnership connecting ventures in packaging, logistics, and philanthropy
+          across the U.S. and India. We blend business excellence with social responsibility, building a legacy of
+          innovation, integrity, and impact.
+        </p>
+        <a href="products.html" class="btn btn-primary">Browse Catalog</a>
+      </div>
+    </section>
+
+
+    <section class="our-leadership-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag">Our Leadership</div>
+          <h1>Meet the Family Driving Our Vision</h1>
+          <p>
+            Our leadership combines decades of experience with fresh perspectives, united by shared values and a
+            commitment to sustainable growth.
           </p>
-          <ul class="mb-0">
-            <li>Reliable specs and performance</li>
-            <li>Bulk, case and custom orders accepted</li>
-            <li>Quick quoting and responsive support</li>
-          </ul>
         </div>
-        <div class="col-lg-6" data-aos="fade-left">
-          <img class="img-fluid rounded shadow" src="https://source.unsplash.com/900x650/?aluminum,packaging"
-            alt="About SreeVee">
+        <div class="our-leadership-grid">
+          <!-- item 1  -->
+          <div class="our-leadership-grid-item">
+            <figure class="our-leadership-card">
+              <div class="img-wrapper">
+                <img class="our-leadership-card-img" src="https://sreeveegroup.com/assets/our-leadership/Sridhar.jpg"
+                  alt="">
+              </div>
+              <figcaption class="our-leadership-card-caption">
+                <h1 class="our-leadership-card-caption-item our-leadership-card-caption-item-name">Sridhar Srinivasan
+                </h1>
+                <h3 class="our-leadership-card-caption-item our-leadership-card-caption-item-role">Chairman & CEO</h3>
+                <p class="our-leadership-card-caption-item-text">
+                  Visionary founder; 40+ years building a multi-million-dollar packaging business and philanthropic
+                  legacy
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <!-- item 2  -->
+          <div class="our-leadership-grid-item">
+            <figure class="our-leadership-card">
+              <div class="img-wrapper">
+                <img class="our-leadership-card-img" src="https://sreeveegroup.com/assets/our-leadership/Srividya.jpg"
+                  alt="">
+              </div>
+              <figcaption class="our-leadership-card-caption">
+                <h1 class="our-leadership-card-caption-item our-leadership-card-caption-item-name">Srividya Sridhar</h1>
+                <h3 class="our-leadership-card-caption-item our-leadership-card-caption-item-role">
+                  Vice Chairman and General Partner</h3>
+                <p class="our-leadership-card-caption-item-text">
+                  PhD. in Nanoscience, R&D pioneer; Active in philanthropy and offering strategic governance
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <!-- item 3  -->
+          <div class="our-leadership-grid-item">
+            <figure class="our-leadership-card">
+              <div class="img-wrapper">
+                <img class="our-leadership-card-img"
+                  src="https://sreeveegroup.com/assets/our-leadership/Srividvatha.jpg" alt="">
+              </div>
+              <figcaption class="our-leadership-card-caption">
+                <h1 class="our-leadership-card-caption-item our-leadership-card-caption-item-name">Srividvatha Sridhar
+                </h1>
+                <h3 class="our-leadership-card-caption-item our-leadership-card-caption-item-role">
+                  Director</h3>
+                <p class="our-leadership-card-caption-item-text">
+                  Operations expert; focused on business process, scalable technology, and efficiency
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <!-- item 4  -->
+          <div class="our-leadership-grid-item">
+            <figure class="our-leadership-card">
+              <div class="img-wrapper">
+                <img class="our-leadership-card-img" src="https://sreeveegroup.com/assets/our-leadership/Sanvitha.jpg"
+                  alt="">
+              </div>
+              <figcaption class="our-leadership-card-caption">
+                <h1 class="our-leadership-card-caption-item our-leadership-card-caption-item-name">Srisanvitha Sridhar
+                </h1>
+                <h3 class="our-leadership-card-caption-item our-leadership-card-caption-item-role">
+                  Director</h3>
+                <p class="our-leadership-card-caption-item-text">
+                  Marketing strategist; focused on brand growth and optimizing business revenue
+                </p>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
-  <footer class="bg-dark text-white py-4 mt-5">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-      <div>
-        <strong>SreeVee</strong> · Packaging Solutions
+  <!-- CTA Section -->
+  <section class="py-5 bg-primary text-white">
+    <div class="container text-center" data-aos="zoom-in">
+      <h3 class="fw-semibold mb-2">Need a custom size or bulk pricing?</h3>
+      <p class="mb-4">Tell us what you need and we’ll get back within 1 business day.</p>
+      <a href="get-quote.html?product=custom" class="btn btn-light btn-lg">Request a Quote</a>
+    </div>
+  </section>
+
+  <footer class="text-white py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <img src="./assets/images/SVA_logo.png" alt="SreeVee Logo"
+            style="height: 60px; width: auto; margin-bottom: 1rem;">
+          <p class="text-secondary">Global solutions rooted in family values, creating sustainable impact
+            across continents.</p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-primary fw-semibold mb-3">Quick Links</h5>
+          <ul class="list-unstyled text-secondary">
+            <li><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+            <li><a href="products.html" class="text-secondary text-decoration-none">Products</a></li>
+            <li><a href="about.html" class="text-secondary text-decoration-none">About</a></li>
+            <li><a href="contact.html" class="text-secondary text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-primary fw-semibold mb-3">Contact</h5>
+          <ul class="list-unstyled text-secondary">
+            <li>Email: info@sreevegroup.com</li>
+            <li>Phone: +1 555 000 1234</li>
+            <li>Address: 123 Industrial Park</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-primary fw-semibold mb-3">Follow Us</h5>
+          <div class="d-flex gap-2">
+            <a href="https://www.linkedin.com/company/sreevee-group/" class="social-icon-link" target="_blank"
+              rel="noopener noreferrer" title="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="text-secondary">© <span id="year"></span> SreeVee. All rights reserved.</div>
+
+      <hr class="border-secondary">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div class="text-secondary">
+          <p class="mb-0">&copy; <span id="year"></span> SreeVee. All rights reserved.</p>
+        </div>
+        <div class="d-flex gap-3">
+          <a href="privacy-policy.html" class="text-secondary text-decoration-none">Privacy Policy</a>
+          <a href="terms-of-service.html" class="text-secondary text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     if (window.AOS) AOS.init({ duration: 600, once: true });

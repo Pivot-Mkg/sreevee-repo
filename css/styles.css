@@ -465,6 +465,10 @@ body {
     min-height: 0;
 }
 
+.get-quote img {
+    height: 300px;
+}
+
 .col-lg-5 .company-panel {
     /* make the company panel take remaining space and allow internal scrolling if needed */
     flex: 1 1 50%;
@@ -488,6 +492,10 @@ body {
 
     .products-section h2 {
         font-size: 2rem;
+    }
+
+    .get-quote img {
+        height: 250px;
     }
 }
 
@@ -538,12 +546,6 @@ body {
 .bg-primary .container {
     position: relative;
     z-index: 1;
-}
-
-/* Footer Enhancement */
-footer.bg-dark {
-    background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%) !important;
-    border-top: 3px solid var(--accent);
 }
 
 /* Form Elements */
@@ -676,3 +678,110 @@ ol {
 .notice.error {
     background: linear-gradient(135deg, #dc3545 0%, #bb2d3b 100%);
 }
+
+/* Social Icon Link Styling */
+.social-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 1.25rem;
+}
+
+.social-icon-link:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: white;
+}
+
+.btn-light:hover {
+    border: 1px solid var(--primary);
+}
+
+/* our leadership card section start */
+.tag {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background-color: rgb(37 46 87 / 0.1);
+    width: fit-content;
+    font-weight: 500;
+    margin: auto;
+    color: rgb(37 46 87 / var(--tw-text-opacity, 1));
+    font-size: 14px;
+}
+
+.our-leadership-section {
+    padding-bottom: 3em;
+}
+
+.our-leadership-section .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 3em auto 2em auto;
+    padding: 1em 2em;
+}
+
+.our-leadership-section .section-header h1 {
+    margin: 16px auto 0 auto;
+    color: rgb(37 46 87 / var(--tw-text-opacity, 1));
+}
+
+.our-leadership-section .section-header p {
+    color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+.our-leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    padding: 2em;
+    max-width: 1224px;
+    margin: auto;
+}
+
+.our-leadership-card img {
+    width: 80%;
+    height: auto;
+    border-radius: 22px;
+    margin: auto;
+    transition: .3s;
+
+}
+
+.our-leadership-card:hover img {
+    transform: scale(1.2);
+}
+
+.our-leadership-card {
+    margin: 0%;
+    padding: 0%;
+}
+
+.our-leadership-card-caption {
+    margin-top: 1em;
+}
+
+.our-leadership-card-caption-item-name {
+    font-size: 22px;
+    color: rgb(37 46 87 / var(--tw-text-opacity, 1));
+}
+
+.our-leadership-card-caption-item-role,
+.our-leadership-card-caption-item-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.our-leadership-card-caption-item-text {
+    margin-top: 6px;
+    color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+/* leadership end 
