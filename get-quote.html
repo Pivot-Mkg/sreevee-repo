@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Quote</title>
+  <title>Request a Quote</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
@@ -23,10 +23,10 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="get-quote.html?product=custom">Get Quote</a></li>
+          <li class="nav-item"><a class="nav-link active" href="get-quote.html?product=custom">Request a Quote</a></li>
         </ul>
       </div>
     </div>
@@ -47,7 +47,7 @@
           <div class="card shadow-sm h-100">
             <div class="card-body p-4 p-md-5">
               <h1 class="h3 fw-bold mb-3 text-primary">Your Request</h1>
-              <p class="text-secondary">Review or select product details and share your info. Weâ€™ll respond with
+              <p class="text-secondary">Review or select product details and share your info. We'll respond with
                 pricing
                 or more information based on your selection.</p>
 
@@ -161,7 +161,7 @@
 
                 <div class="d-grid d-sm-flex gap-3 mt-4">
                   <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
-                  <a id="backToProduct2" class="btn btn-outline-secondary btn-lg" href="#">Back to Product</a>
+                  <a id="backToProduct2" class="btn btn-outline-secondary btn-lg" href="#">Back</a>
                 </div>
               </form>
             </div>
@@ -174,16 +174,19 @@
                 alt="SreeVee products" class="w-100 object-fit-cover">
             </div>
             <div class="p-4 bg-light rounded">
-              <h2 class="h5 text-primary">Company</h2>
-              <p class="mb-1">SreeVee Packaging Solutions</p>
-              <p class="mb-1">Email: info@example.com</p>
-              <p class="mb-3">Phone: +1 555 000 1234</p>
+              <h2 class="h4 text-primary">Company</h2>
+              <p class="mb-1"><b>SreeVee Packaging Solutions</b></p>
+              <ul>
+                <li><b>Email:</b> info@sreevegroup.com</li>
+                <li><b>Toll Free:</b> +1888 WPS TXUS</li>
+              </ul>
               <hr>
-              <h2 class="h6 text-primary">Office</h2>
-              <p class="mb-1">123 Industrial Park</p>
-              <p class="mb-1">City, State, ZIP</p>
+              <h2 class="h4 text-primary">Office</h2>
+              <p class="mb-1">Web Packaging Solutions, LLC,
+                            11200 Westheimer Rd.</p>
+              <p class="mb-1">#505 Houston, Texas 77042</p>
               <hr>
-              <h2 class="h6 text-primary">Hours</h2>
+              <h2 class="h4 text-primary">Hours</h2>
               <p class="mb-0">Mon–Fri: 9:00–18:00</p>
             </div>
           </div>
@@ -202,32 +205,36 @@
   </section>
 
   <!-- Footer -->
-  <footer class="text-white py-5">
+  <footer class="text-white py-5 pb-3">
     <div class="container">
       <div class="row mb-4">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
           <img src="./assets/images/SVA_logo.png" alt="SreeVee Logo"
             style="height: 60px; width: auto; margin-bottom: 1rem;">
-          <p class="text-secondary">Global solutions rooted in family values, creating sustainable impact
-            across continents.</p>
+          <p class="text-secondary"><b>Global solutions rooted in family values, creating sustainable impact
+              across continents.</b></p>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
           <h5 class="text-primary fw-semibold mb-3">Quick Links</h5>
           <ul class="list-unstyled text-secondary">
-            <li><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
-            <li><a href="products.html" class="text-secondary text-decoration-none">Products</a></li>
-            <li><a href="about.html" class="text-secondary text-decoration-none">About</a></li>
-            <li><a href="contact.html" class="text-secondary text-decoration-none">Contact</a></li>
+            <li><a href="about.html" class="text-secondary text-decoration-none"><b>About</b></a></li>
+            <li><a href="products.html" class="text-secondary text-decoration-none"><b>Products</b></a></li>
+            <li><a href="contact.html" class="text-secondary text-decoration-none"><b>Contact</b></a></li>
+            <li><a href="get-quote.html" class="text-secondary text-decoration-none"><b>Request a
+                  Quote</b></a></li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
           <h5 class="text-primary fw-semibold mb-3">Contact</h5>
           <ul class="list-unstyled text-secondary">
-            <li>Email: info@sreevegroup.com</li>
-            <li>Phone: +1 555 000 1234</li>
-            <li>Address: 123 Industrial Park</li>
+            <li><b>Email:</b> info@sreevegroup.com</li>
+            <!-- <li>Phone: +1 555 000 1234</li> -->
+            <li><b>Toll Free:</b> +1888 WPS TXUS</li>
+            <li><b>Address:</b> Web Packaging Solutions, LLC,
+              11200 Westheimer Rd., #505
+              Houston, Texas 77042</li>
           </ul>
         </div>
 
