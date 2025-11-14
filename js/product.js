@@ -8,13 +8,13 @@ const productData = {
     name: "Aluminum Foil Rolls (AL-FR)",
     desc: "Food service aluminum foil rolls available in 12/18/24 inches and multiple microns.",
     images: [
-      "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
+      "./assets/images/aluminium/al-foil-roll.png",
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/BOPET-FILM.jpg",
       "assets/images/foil-img.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Description",
         "Length (feet)",
         "Width (inches)",
@@ -171,13 +171,13 @@ const productData = {
     name: "Aluminum Foil Sheets (AL-FS)",
     desc: "Pre-cut aluminum foil sheets for quick service and prep.",
     images: [
-      "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
+      "./assets/images/aluminium/al-foil-sheets.png",
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/BOPET-FILM.jpg",
       "assets/images/foil-img.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Description",
         "Length (inches)",
         "Width (inches)",
@@ -239,13 +239,13 @@ const productData = {
     name: "Aluminum Cushion Foil (AL-CF)",
     desc: "Cushion foil sheets for takeout containers and food protection.",
     images: [
-      "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
+      "./assets/images/aluminium/al-cushiom-foil.png",
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/BOPET-FILM.jpg",
       "assets/images/foil-img.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Description",
         "Length (inches)",
         "Width (inches)",
@@ -285,13 +285,13 @@ const productData = {
     name: "Aluminum Foil Trays - Rectangular (AL-FT-RCT)",
     desc: "Rectangular aluminum steam pans and loaf pans in multiple gauges.",
     images: [
-      "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
+      "./assets/images/aluminium/al-foil-trays-rectangular.png",
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/BOPET-FILM.jpg",
       "assets/images/foil-img.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Description",
         "Common Name",
         "Max Length (inches)",
@@ -406,13 +406,13 @@ const productData = {
     name: "Aluminum Foil Trays - Round (AL-FT-RND)",
     desc: "Round aluminum pans in 7, 8, and 9 inch sizes.",
     images: [
-      "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
+      "./assets/images/aluminium/al-trays-round.png",
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/BOPET-FILM.jpg",
       "assets/images/foil-img.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Description",
         "Common Name",
         "Max Diameter (inches)",
@@ -485,13 +485,13 @@ const productData = {
     name: "Aluminum Tray Lids - Rectangular (AL-FT-RCT-LD)",
     desc: "Aluminum foil lids for full and half steam pans.",
     images: [
-      "https://webpackagingsolutions.com/assets/images/packaging-product-img/aluminium-foil.jpg",
+      "./assets/images/aluminium/al-foil-lids.png",
       "https://webpackagingsolutions.com/assets/images/packaging-product-img/BOPET-FILM.jpg",
       "assets/images/foil-img.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        "SKU",
         "Product Description",
         "Common Name",
         "Max Length (inches)",
@@ -554,19 +554,18 @@ const productData = {
       ],
     },
   },
+
   // Compostable: Take-Out Containers
   cptc: {
     name: "Compostable Take-Out Containers (CP-TC)",
     desc: "Bagasse, plant fiber, MFPP clamshells in multiple sizes and compartments.",
     images: [
-      "assets/images/take-out-lids.jpg",
-      "assets/images/bowls.jpg",
-      "assets/images/plate.jpg",
-      "assets/images/lids.jpg",
+      "./assets/images/compost/compost-take-out-con.png",
+      "assets/images/take-out-lids.jpg", 
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Type",
         "Material",
         "Shape",
@@ -665,19 +664,18 @@ const productData = {
       ],
     },
   },
+
   // Compostable: Plates
   cppt: {
     name: "Compostable Plates (CP-PT)",
     desc: "Round and oval plates in pulp and bagasse, multiple sizes and compartments.",
     images: [
+      "./assets/images/compost/Compostable-plates.png",
       "assets/images/plate.jpg",
-      "assets/images/bowls.jpg",
-      "assets/images/take-out-lids.jpg",
-      "assets/images/lids.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Type",
         "Material",
         "Shape",
@@ -762,14 +760,12 @@ const productData = {
     name: "Compostable Bowls (CP-BL)",
     desc: "Fiber and paper bowls in 12–32 oz with matching lids.",
     images: [
+      "./assets/images/compost/compost-bowls.png",
       "assets/images/bowls.jpg",
-      "assets/images/plate.jpg",
-      "assets/images/take-out-lids.jpg",
-      "assets/images/lids.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Type",
         "Material",
         "Shape",
@@ -837,14 +833,12 @@ const productData = {
     name: "PET Lids (PT-LD)",
     desc: "Clear PET lids for 12–32 oz bowls and portion cups.",
     images: [
+      "./assets/images/compost/pet-lids.png",
       "assets/images/lids.jpg",
-      "assets/images/bowls.jpg",
-      "assets/images/plate.jpg",
-      "assets/images/take-out-lids.jpg",
     ],
     specs: {
       columns: [
-        "WPS SKU",
+        " SKU",
         "Product Type",
         "Material",
         "Shape",
@@ -930,10 +924,14 @@ data.images.forEach((src, i) => {
 const specsHost = document.getElementById("specs");
 if (specsHost && data.specs) {
   const { columns, rows } = data.specs;
-  const thead = `<thead><tr>${columns
+  const skipSku =
+    columns.length && columns[0].toLowerCase().includes("sku") ? 1 : 0;
+  const visibleColumns = columns.slice(skipSku);
+  const visibleRows = rows.map((r) => (skipSku ? r.slice(skipSku) : r));
+  const thead = `<thead><tr>${visibleColumns
     .map((c) => `<th scope="col">${c}</th>`)
     .join("")}</tr></thead>`;
-  const tbody = `<tbody>${rows
+  const tbody = `<tbody>${visibleRows
     .map((r) => `<tr>${r.map((v) => `<td>${v}</td>`).join("")}</tr>`)
     .join("")}</tbody>`;
   specsHost.innerHTML = `
