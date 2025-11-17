@@ -158,6 +158,11 @@ body {
         padding-left: 0;
         padding-right: 0;
     }
+
+    .navbar .navbar-collapse {
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
+    }
 }
 
 .navbar-brand {
@@ -214,6 +219,19 @@ body {
     width: 100%;
 }
 
+/* Hide toggler on desktop, keep it on mobile */
+@media (min-width: 992px) {
+    .navbar .navbar-toggler {
+        display: none !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-toggler {
+        display: flex !important;
+    }
+}
+
 /* Responsive logo */
 @media (max-width: 576px) {
     .navbar-brand img {
@@ -221,6 +239,154 @@ body {
     }
 }
 
+/* Mega menu styles */
+.mega-dropdown {
+    position: static;
+}
+
+.mega-menu {
+    width: min(1100px, 95vw);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: #fff;
+}
+
+.mega-menu-inner {
+    padding: 0.25rem;
+}
+
+.mega-section {
+    background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.mega-section:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.mega-section-header .mega-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+.mega-links {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.mega-link {
+    display: block;
+    color: var(--dark);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.45rem 0.55rem;
+    background: #fff;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.mega-link:hover {
+    color: var(--primary);
+    border-color: var(--border);
+    background: #f4f6fb;
+    padding-left: 0.75rem;
+}
+
+@media (min-width: 992px) {
+    .mega-dropdown .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, 10px);
+        left: 50%;
+        margin-top: 0.75rem;
+        transition: var(--transition);
+    }
+
+    .mega-dropdown:hover .dropdown-menu,
+    .mega-dropdown.show .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+    }
+}
+
+@media (max-width: 991.98px) {
+    .mega-dropdown .dropdown-menu {
+        position: static;
+        transform: none !important;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        padding: 0.25rem 0 0.5rem 0;
+        margin-top: 0.25rem;
+        max-height: 70vh;
+        overflow-x: visible;
+        overflow-y: auto;
+    }
+
+    .mega-menu-inner .row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.4rem 0.75rem;
+    }
+
+    /* Force clamshell prototype to span full width on mobile */
+    .mega-menu-inner .col-12:nth-child(3) {
+        grid-column: 1 / -1;
+    }
+
+    .mega-section {
+        background: transparent;
+        border: none;
+        padding: 0.2rem 0;
+    }
+
+    .mega-section-header {
+        margin-bottom: 0.15rem;
+    }
+
+    .mega-section p {
+        display: none;
+    }
+
+    .mega-links {
+        gap: 0.1rem;
+        margin-top: 0;
+    }
+
+    .mega-link {
+        padding: 0.25rem 0;
+        background: transparent;
+    }
+}
+
+/* Remove default caret and align toggle icon cleanly */
+/* .navbar .dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+    border: solid currentColor;
+    border-width: 0 0.18rem 0.24rem 0.18rem;
+    border-top: 0;
+    transform-origin: center;
+    transition: var(--transition);
+    content: "";
+} */
+
+.navbar .dropdown.show .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
 /* Hero Banner styles */
 .hero-banner {
     min-height: 70vh;
