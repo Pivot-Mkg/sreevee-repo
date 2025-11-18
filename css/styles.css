@@ -1036,6 +1036,11 @@ footer b {
     .our-leadership-card img {
         width: 100%;
     }
+    .navbar .nav-link.active::after {
+    width: 30%;
+    left: 13px;
+    transform: none;
+}
 }
 
 /* leadership end 
