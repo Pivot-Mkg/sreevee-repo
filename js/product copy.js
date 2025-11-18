@@ -886,148 +886,76 @@ const productData = {
     },
   },
 
-  // Clamshell Product Range 
-
-  clmpn: {
-    name: "Clamshell Punnets",
-    desc: "Vented produce packs in compact footprints.",
+  clm: {
+    name: "Clamshell Containers",
+    desc: "Punnets, heat-seal packs, flowpacks, open-window trays, on-the-go packs, tamper-evident, and hinged containers.",
     images: [
-      "./assets/images/clamshell/punnets-1.png",
-      "./assets/images/clamshell/punnets-2.png",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
+      "./assets/images/products-banner.jpeg",
     ],
     specs: {
-      columns: ["SKU", "Length (in)", "Width (in)", "Height (in)", "Weight (oz)", "Pieces per Carton"],
-      rows: [
-        ["WPSCS01", 4.528, 4.528, 1.575, 0.406, 1050],
-        ["WPSCS02", 5.125, 4.437, 1.5625, 0.459, 1150],
-        ["WPSCS03", 5.125, 4.437, 2.75, 0.617, 1050],
-        ["WPSCS04", 7.638, 5.039, 2.559, 0.388, 1225],
-        ["WPSCS05", 4.528, 4.528, 2.756, 0.335, 1500],
-        ["WPSCS06", 5.039, 3.701, 2.165, 0.317, 1260],
-        ["WPSCS07", 4.528, 4.528, 2.756, 0.335, 1500],
-        ["WPSCS08", 5.039, 3.701, 2.165, 0.317, 1225],
-        ["WPSCS09", 7.5, 4.5, 2.187, 0.564, 840],
-        ["WPSCS10", 7.5, 4.5, 2.375, 0.6, 840],
+      columns: [
+        "SKU",
+        "Family",
+        "Length (in)",
+        "Width (in)",
+        "Height (in)",
+        "Weight (oz)",
+        "Pieces per Carton",
       ],
-    },
-  },
-  clmhsp: {
-    name: "Heat-seal Punnets",
-    desc: "Seal-ready punnets for fresh produce lines.",
-    images: [
-    "assets/images/clamshell/Heat-seal -punnets-1.png",
-    "assets/images/clamshell/Heat-seal-punnets-2.png",
-    ],
-    specs: {
-      columns: ["SKU", "Length (in)", "Width (in)", "Height (in)", "Weight (oz)", "Pieces per Carton"],
       rows: [
-        ["WPSHSP01", 5.551, 4.646, 1.024, 0.23, 2100],
-        ["WPSHSP02", 5.709, 4.724, 1.772, 0.282, 2100],
-        ["WPSHSP03", 5.709, 4.724, 2.953, "0.317/0.353/0.388", "1800/1775/1680"],
-        ["WPSHSP04", 5.709, 4.724, 3.15, "0.423/0.014", 1585],
-        ["WPSHSP05", 7.244, 4.606, 1.575, 0.381, 1375],
-        ["WPSHSP06", 7.244, 4.606, 1.969, 0.448, 1350],
-        ["WPSHSP07", 7.244, 4.606, 2.362, 0.448, 1300],
-        ["WPSHSP08", 7.244, 4.606, 2.756, 0.448, 1100],
-        ["WPSHSP09", 7.244, 4.606, 2.953, 0.529, 1050],
-        ["WPSHSP10", 5.63, 4.764, 0.787, 0.247, 1050],
-      ],
-    },
-  },
-  clmfp: {
-    name: "Flowpacks",
-    desc: "Sturdy trays suited for flow-wrapped produce.",
-    images: [
-   "assets/images/clamshell/Flowpacks-1.png",
-   "assets/images/clamshell/Flowpacks-2.png",
-    ],
-    specs: {
-      columns: ["SKU", "Length (in)", "Width (in)", "Height (in)", "Weight (oz)", "Pieces per Carton"],
-      rows: [
-        ["WPSFP01", 7.244, 4.606, 1.969, 0.3, 1440],
-        ["WPSFP02", 7.244, 4.606, 2.362, 0.317, 1420],
-        ["WPSFP03", 7.244, 4.606, 2.953, "0.388/0.459", "1280/1260"],
-        ["WPSFP04", 7.244, 4.606, 4.055, 0.547, 1120],
-      ],
-    },
-  },
-  clmowt: {
-    name: "Overwrap Trays",
-    desc: "Open trays ready for overwrap formats.",
-    images: [
-      "assets/images/clamshell/OVERWRAP-TRAYS-1.png",
-      "assets/images/clamshell/OVERWRAP-TRAYS-2.png",
-    ],
-    specs: {
-      columns: ["SKU", "Length (in)", "Width (in)", "Height (in)", "Weight (oz)", "Pieces per Carton"],
-      rows: [
-        ["WPSOWT01", 6.89, 4.921, 0.748, "0.282/0.282", 2400],
-        ["WPSOWT02", 6.89, 4.921, 0.827, "0.247/0.282", 2400],
-        ["WPSOWT03", 6.89, 4.921, 1.063, "0.335/0.494/0.529", "2000/1360/1320"],
-        ["WPSOWT04", 6.89, 4.921, 1.496, 0.198, 4000],
-        ["WPSOWT05", 6.89, 4.921, 1.693, 0.335, 1800],
-        ["WPSOWT06", 4.606, 4.606, 0.709, 0.229, 3400],
-        ["WPSOWT07", 6.888, 4.921, 0.866, 0.388, 2000],
-        ["WPSOWT08", 9.252, 3.74, 0.984, 0.388, 2100],
-      ],
-    },
-  },
-  clmotg: {
-    name: "On-the-go Packs",
-    desc: "Grab-and-go clamshells for snacking formats.",
-    images: [
-      "assets/images/clamshell/on-the-go-packa-1.png",
-      "assets/images/clamshell/on-the-go-pack-2.png",
-    ],
-    specs: {
-      columns: ["SKU", "Length (in)", "Width (in)", "Height (in)", "Weight (oz)", "Pieces per Carton"],
-      rows: [
-        ["WPSOTGP01", 4.606, 4.606, 0.63, 0.265, 1000],
-        ["WPSOTGP02", 4.488, 4.488, 2.047, 4.488, 2000],
-        ["WPSOTGP03", 4.488, 4.488, 1.575, 0.3, 1000],
-        ["WPSOTGP04", 4.488, 4.488, 2.047, 0.399, 1000],
-        ["WPSOTGP05", 4.488, 4.488, 2.953, 0.564, 1000],
-        ["WPSOTGP06", 4.488, 4.488, 4.173, 0.646, 1350],
-      ],
-    },
-  },
-  clmtec: {
-    name: "Tamper-evident Clamshells",
-    desc: "Tamper-aware formats for elevated safety.",
-    images: [
-      "assets/images/clamshell/TAMPER-EVIDENT-CLAMSHELLS-1.png",
-      "assets/images/clamshell/TAMPER-EVIDENT-CLAMSHELLS-2.png",
-    ],
-    specs: {
-      columns: ["SKU", "Length (in)", "Width (in)", "Height (in)", "Weight (oz)", "Pieces per Carton"],
-      rows: [
-        ["WPSTEC01", 5.709, 5.039, 1.575, 0.6, 655],
-        ["WPSTEC02", 5.709, 5.039, 1.969, 0.635, 640],
-        ["WPSTEC03", 5.709, 5.039, 2.559, 0.776, 600],
-        ["WPSTEC04", 7.441, 5.709, 1.969, 1.058, 320],
-        ["WPSTEC05", 7.441, 5.709, 2.362, 1.199, 310],
-        ["WPSTEC06", 7.441, 5.709, 2.835, 1.34, 300],
-      ],
-    },
-  },
-  clmhc: {
-    name: "Hinged Containers",
-    desc: "Ready-to-serve hinged clamshells for deli and prepared foods.",
-    images: [
-      "assets/images/clamshell/hinged-container-1.png",
-      "assets/images/clamshell/hinged-container-2.png",
-    ],
-    specs: {
-      columns: ["SKU", "Length (in)", "Width (in)", "Height (in)", "Weight (oz)", "Pieces per Carton"],
-      rows: [
-        ["WPSHC01", 7.402, 5.709, 1.772, 0.741, 630],
-        ["WPSHC02", 8.583, 6.102, 1.969, 1.093, 430],
-        ["WPSHC03", 7.402, 5.709, 3.15, 0.97, 610],
-        ["WPSHC04", 7.402, 5.709, 3.74, 0.988, 600],
-        ["WPSHC05", 8.583, 6.102, 1.969, 1.093, 430],
-        ["WPSHC06", 8.583, 6.102, 2.362, 1.164, 420],
-        ["WPSHC07", 8.582, 6.102, 2.953, 1.305, 410],
-        ["WPSHC08", 8.583, 6.102, 3.346, 1.376, 400],
+        ["WPSCS01", "Clamshell Punnets", 4.528, 4.528, 1.575, 0.406, 1050],
+        ["WPSCS02", "Clamshell Punnets", 5.125, 4.437, 1.5625, 0.459, 1150],
+        ["WPSCS03", "Clamshell Punnets", 5.125, 4.437, 2.75, 0.617, 1050],
+        ["WPSCS04", "Clamshell Punnets", 7.638, 5.039, 2.559, 0.388, 1225],
+        ["WPSCS05", "Clamshell Punnets", 4.528, 4.528, 2.756, 0.335, 1500],
+        ["WPSCS06", "Clamshell Punnets", 5.039, 3.701, 2.165, 0.317, 1260],
+        ["WPSCS07", "Clamshell Punnets", 4.528, 4.528, 2.756, 0.335, 1500],
+        ["WPSCS08", "Clamshell Punnets", 5.039, 3.701, 2.165, 0.317, 1225],
+        ["WPSCS09", "Clamshell Punnets", 7.5, 4.5, 2.187, 0.564, 840],
+        ["WPSCS10", "Clamshell Punnets", 7.5, 4.5, 2.375, 0.6, 840],
+        ["WPSHSP01", "Heat-seal Punnets", 5.551, 4.646, 1.024, 0.23, 2100],
+        ["WPSHSP02", "Heat-seal Punnets", 5.709, 4.724, 1.772, 0.282, 2100],
+        ["WPSHSP03", "Heat-seal Punnets", 5.709, 4.724, 2.953, "0.317/0.353/0.388", "1800/1775/1680"],
+        ["WPSHSP04", "Heat-seal Punnets", 5.709, 4.724, 3.15, "0.423/0.014", 1585],
+        ["WPSHSP05", "Heat-seal Punnets", 7.244, 4.606, 1.575, 0.381, 1375],
+        ["WPSHSP06", "Heat-seal Punnets", 7.244, 4.606, 1.969, 0.448, 1350],
+        ["WPSHSP07", "Heat-seal Punnets", 7.244, 4.606, 2.362, 0.448, 1300],
+        ["WPSHSP08", "Heat-seal Punnets", 7.244, 4.606, 2.756, 0.448, 1100],
+        ["WPSHSP09", "Heat-seal Punnets", 7.244, 4.606, 2.953, 0.529, 1050],
+        ["WPSHSP10", "Heat-seal Punnets", 5.63, 4.764, 0.787, 0.247, 1050],
+        ["WPSFP01", "Flowpacks", 7.244, 4.606, 1.969, 0.3, 1440],
+        ["WPSFP02", "Flowpacks", 7.244, 4.606, 2.362, 0.317, 1420],
+        ["WPSFP03", "Flowpacks", 7.244, 4.606, 2.953, "0.388/0.459", "1280/1260"],
+        ["WPSFP04", "Flowpacks", 7.244, 4.606, 4.055, 0.547, 1120],
+        ["WPSOWT01", "Open Window Trays", 6.89, 4.921, 0.748, "0.282/0.282", 2400],
+        ["WPSOWT02", "Open Window Trays", 6.89, 4.921, 0.827, "0.247/0.282", 2400],
+        ["WPSOWT03", "Open Window Trays", 6.89, 4.921, 1.063, "0.335/0.494/0.529", "2000/1360/1320"],
+        ["WPSOWT04", "Open Window Trays", 6.89, 4.921, 1.496, 0.198, 4000],
+        ["WPSOWT05", "Open Window Trays", 6.89, 4.921, 1.693, 0.335, 1800],
+        ["WPSOWT06", "Open Window Trays", 4.606, 4.606, 0.709, 0.229, 3400],
+        ["WPSOWT07", "Open Window Trays", 6.888, 4.921, 0.866, 0.388, 2000],
+        ["WPSOWT08", "Open Window Trays", 9.252, 3.74, 0.984, 0.388, 2100],
+        ["WPSOTGP01", "On-the-go Packs", 4.606, 4.606, 0.63, 0.265, 1000],
+        ["WPSOTGP02", "On-the-go Packs", 4.488, 4.488, 2.047, 4.488, 2000],
+        ["WPSOTGP03", "On-the-go Packs", 4.488, 4.488, 1.575, 0.3, 1000],
+        ["WPSOTGP04", "On-the-go Packs", 4.488, 4.488, 2.047, 0.399, 1000],
+        ["WPSOTGP05", "On-the-go Packs", 4.488, 4.488, 2.953, 0.564, 1000],
+        ["WPSOTGP06", "On-the-go Packs", 4.488, 4.488, 4.173, 0.646, 1350],
+        ["WPSTEC01", "Tamper-evident", 5.709, 5.039, 1.575, 0.6, 655],
+        ["WPSTEC02", "Tamper-evident", 5.709, 5.039, 1.969, 0.635, 640],
+        ["WPSTEC03", "Tamper-evident", 5.709, 5.039, 2.559, 0.776, 600],
+        ["WPSTEC04", "Tamper-evident", 7.441, 5.709, 1.969, 1.058, 320],
+        ["WPSTEC05", "Tamper-evident", 7.441, 5.709, 2.362, 1.199, 310],
+        ["WPSTEC06", "Tamper-evident", 7.441, 5.709, 2.835, 1.34, 300],
+        ["WPSHC01", "Hinged Containers", 7.402, 5.709, 1.772, 0.741, 630],
+        ["WPSHC02", "Hinged Containers", 8.583, 6.102, 1.969, 1.093, 430],
+        ["WPSHC03", "Hinged Containers", 7.402, 5.709, 3.15, 0.97, 610],
+        ["WPSHC04", "Hinged Containers", 7.402, 5.709, 3.74, 0.988, 600],
+        ["WPSHC05", "Hinged Containers", 8.583, 6.102, 1.969, 1.093, 430],
+        ["WPSHC06", "Hinged Containers", 8.583, 6.102, 2.362, 1.164, 420],
+        ["WPSHC07", "Hinged Containers", 8.582, 6.102, 2.953, 1.305, 410],
+        ["WPSHC08", "Hinged Containers", 8.583, 6.102, 3.346, 1.376, 400],
       ],
     },
   },
@@ -1139,13 +1067,7 @@ switch (productKey) {
     if (lenLabel) lenLabel.textContent = "Diameter (inches)";
     if (widLabel) widLabel.textContent = "Depth (inches)";
     break;
-  case "clmpn":
-  case "clmhsp":
-  case "clmfp":
-  case "clmowt":
-  case "clmotg":
-  case "clmtec":
-  case "clmhc": // Clamshell families, use Height as the third dimension
+  case "clm": // Clamshells, use Height as the third dimension
     lenIdx = 2;
     widIdx = 3;
     thkIdx = 4;
@@ -1218,12 +1140,7 @@ document.getElementById("getQuoteBtn").addEventListener("click", () => {
   let sku = "";
   let family = "";
 
-  const isClamshellFamily =
-    ["clmpn", "clmhsp", "clmfp", "clmowt", "clmotg", "clmtec", "clmhc"].includes(
-      productKey
-    );
-
-  if (isClamshellFamily && data.specs && Array.isArray(data.specs.rows)) {
+  if (productKey === "clm" && data.specs && Array.isArray(data.specs.rows)) {
     const eq = (a, b) =>
       a !== undefined &&
       b !== undefined &&
@@ -1244,12 +1161,12 @@ document.getElementById("getQuoteBtn").addEventListener("click", () => {
     window.location.origin + window.location.pathname.replace(/[^/]*$/, "")
   );
   url.searchParams.set("product", quoteProduct);
-  if (quoteProduct === "custom" && isClamshellFamily) {
+  if (quoteProduct === "custom" && productKey === "clm") {
     url.searchParams.set("category", "clamshell");
   }
   if (length) url.searchParams.set("length", length);
   if (width) url.searchParams.set("width", width);
-  if (isClamshellFamily) {
+  if (productKey === "clm") {
     if (thickness) url.searchParams.set("height", thickness);
     if (sku) url.searchParams.set("sku", sku);
     if (family) url.searchParams.set("family", family);

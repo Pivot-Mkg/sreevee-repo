@@ -333,6 +333,8 @@ body {
         max-height: 70vh;
         overflow-x: visible;
         overflow-y: auto;
+        background: rgb(18 111 247 / 0%);
+        margin-top: 10px;
     }
 
     .mega-menu-inner .row {
@@ -356,18 +358,24 @@ body {
         margin-bottom: 0.15rem;
     }
 
-    .mega-section p {
-        display: none;
+    .mega-section .text-secondary {
+        display: none!important;
+        /* margin: 10px; */
     }
 
     .mega-links {
-        gap: 0.1rem;
+        gap: 0px!important;
         margin-top: 0;
+        color: var(--primary)!important;
+        opacity: 0.7!important;
     }
 
     .mega-link {
-        padding: 0.25rem 0;
+        padding: 0!important;
         background: transparent;
+    }
+    .navbar-brand img{
+        height: 40px;
     }
 }
 
