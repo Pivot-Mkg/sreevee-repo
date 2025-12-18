@@ -8,6 +8,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,11 +25,11 @@
         <i class="fa fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
-         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item">
-                        <a class="nav-link" href="products.html">Products</a>
-                       
+            <a class="nav-link" href="products.html">Products</a>
+
           </li>
           <!-- <li class="nav-item"><a class="nav-link" href="products.html"></a>Product</li> -->
           <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
@@ -69,7 +73,7 @@
         <div class="col-lg-6" data-aos="fade-left">
           <div class="p-4 bg-light rounded h-100">
             <h2 class="h5">Company</h2>
-            <p class="mb-1">SreeVee Packaging Solutions</p>
+            <p class="mb-1">SreeVee Americas</p>
             <p class="mb-1">Email: info@example.com</p>
             <p class="mb-0">Phone: +1 555 000 1234</p>
           </div>
@@ -79,62 +83,69 @@
   </main>
 
   <!-- Footer -->
-    <footer class="text-white py-5 pb-3">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <img src="./assets/images/SVA_logo.png" alt="SreeVee Logo"
-                        style="height: 60px; width: auto; margin-bottom: 1rem;">
-                    <p class="text-secondary"><b>Global solutions rooted in family values, creating sustainable impact
-                            across continents.</b></p>
-                </div>
-
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <h5 class="text-primary fw-semibold mb-3">Quick Links</h5>
-                    <ul class="list-unstyled text-secondary">
-                        <li><a href="about.html" class="text-secondary text-decoration-none"><b>About</b></a></li>
-                        <!-- <li><a href="products.html" class="text-secondary text-decoration-none"><b>Products</b></a></li> -->
-                        <li><a href="contact.html" class="text-secondary text-decoration-none"><b>Contact</b></a></li>
-                        <li><a href="get-quote.html" class="text-secondary text-decoration-none"><b>Request a
-                                    Quote</b></a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <h5 class="text-primary fw-semibold mb-3">Contact</h5>
-                    <ul class="list-unstyled text-secondary">
-                        <li><b>Email:</b> info@sreevegroup.com</li>
-                        <!-- <li>Phone: +1 555 000 1234</li> -->
-                        <li><b>Toll Free:</b> +1888 WPS TXUS</li>
-                        <li><b>Address:</b> SreeVee Americas, LLC,
-                            11200 Westheimer Rd., #505
-                            Houston, Texas 77042</li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-primary fw-semibold mb-3">Follow Us</h5>
-                    <div class="d-flex gap-2">
-                        <a href="https://www.linkedin.com/company/sreevee-group/" class="social-icon-link"
-                            target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="border-secondary">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-                <div class="text-secondary">
-                    <p class="mb-0">&copy; <span id="year"></span> SreeVee. All rights reserved.</p>
-                </div>
-                <div class="d-flex gap-3">
-                    <a href="privacy-policy.html" class="text-secondary text-decoration-none">Privacy Policy</a>
-                    <a href="terms-of-service.html" class="text-secondary text-decoration-none">Terms of Service</a>
-                </div>
-            </div>
+  <footer class="text-white py-5 pb-3">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <img src="./assets/images/SVA_logo.png" alt="SreeVee Logo"
+            style="height: 60px; width: auto; margin-bottom: 1rem;">
+          <p class="text-secondary"><b>Global solutions rooted in family values, creating sustainable impact
+              across continents.</b></p>
         </div>
-    </footer>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-primary fw-semibold mb-3">Quick Links</h5>
+          <ul class="list-unstyled text-secondary">
+            <li><a href="about.html" class="text-secondary text-decoration-none"><b>About</b></a></li>
+            <!-- <li><a href="products.html" class="text-secondary text-decoration-none"><b>Products</b></a></li> -->
+            <li><a href="contact.html" class="text-secondary text-decoration-none"><b>Contact</b></a></li>
+            <li><a href="get-quote.html" class="text-secondary text-decoration-none"><b>Request a
+                  Quote</b></a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-primary fw-semibold mb-3">Contact</h5>
+          <ul class="list-unstyled text-secondary">
+            <li><b>Email:</b> info@sreevegroup.com</li>
+            <!-- <li>Phone: +1 555 000 1234</li> -->
+            <li><b>Toll Free:</b> +1888 WPS TXUS</li>
+            <li><b>Address:</b> SreeVee Americas, LLC,
+              11200 Westheimer Rd., #505
+              Houston, Texas 77042</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-primary fw-semibold mb-3">Follow Us</h5>
+          <div class="d-flex gap-2">
+            <a href="https://www.linkedin.com/company/sreevee-group/" class="social-icon-link" target="_blank"
+              rel="noopener noreferrer" title="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div class="text-secondary">
+          <p class="mb-0">&copy; <span id="year"></span> SreeVee Americas. All rights reserved.</p>
+        </div>
+        <div class="d-flex gap-3">
+          <a href="privacy-policy.html" class="text-secondary text-decoration-none">Privacy Policy</a>
+          <a href="terms-of-service.html" class="text-secondary text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
