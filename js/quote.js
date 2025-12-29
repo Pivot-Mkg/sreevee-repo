@@ -1,3 +1,86 @@
+let captchaAnswer = 0;
+
+// Generate captcha
+async function generateCaptcha() {
+  try {
+    const response = await fetch('generate-captcha.php');
+    if (!response.ok) {
+      throw new Error('Failed to fetch captcha');
+    }
+    const data = await response.json();
+    const questionEl = document.getElementById('captchaQuestion');
+    questionEl.classList.add('updating');
+    questionEl.textContent = data.question;
+    document.getElementById('captchaAnswer').value = '';
+    setTimeout(() => questionEl.classList.remove('updating'), 400);
+  } catch (error) {
+    // Fallback: generate simple captcha client-side
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const questionEl = document.getElementById('captchaQuestion');
+    questionEl.classList.add('updating');
+    questionEl.textContent = `${num1} + ${num2} = ?`;
+    document.getElementById('captchaAnswer').value = '';
+    setTimeout(() => questionEl.classList.remove('updating'), 400);
+    console.warn('Using client-side captcha fallback');
+  }
+}
+
+// Initialize captcha on page load
+if (document.getElementById('captchaQuestion')) {
+  generateCaptcha();
+  
+  // Refresh captcha button
+  document.getElementById('refreshCaptcha')?.addEventListener('click', generateCaptcha);
+}
+
+// Form validation
+function validateQuoteForm(form) {
+  const name = form.name.value.trim();
+  const company = form.company.value.trim();
+  const email = form.email.value.trim();
+  const notes = form.notes.value.trim();
+  const captcha = form.captcha?.value.trim() || '';
+  
+  // Reset validation states
+  form.querySelectorAll('.form-control').forEach(input => {
+    input.classList.remove('is-invalid');
+  });
+  
+  let isValid = true;
+  
+  if (name.length < 2) {
+    form.name.classList.add('is-invalid');
+    isValid = false;
+  }
+  
+  if (!company) {
+    form.company.classList.add('is-invalid');
+    isValid = false;
+  }
+  
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const personalDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com', 'live.com', 'msn.com', 'ymail.com', 'protonmail.com'];
+  const emailDomain = email.split('@')[1]?.toLowerCase();
+  
+  if (!emailRegex.test(email) || personalDomains.includes(emailDomain)) {
+    form.email.classList.add('is-invalid');
+    isValid = false;
+  }
+  
+  if (notes.length < 10) {
+    form.notes.classList.add('is-invalid');
+    isValid = false;
+  }
+  
+  if (form.captcha && !captcha) {
+    form.captcha.classList.add('is-invalid');
+    isValid = false;
+  }
+  
+  return isValid;
+}
+
 // Read params and fill summary
 const qp = new URLSearchParams(window.location.search);
 const mapName = {
@@ -123,89 +206,75 @@ if (isClamQuick) {
 document.getElementById('quoteForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // Notification helper
-  const ensureNoticeHost = () => {
-    let host = document.getElementById('notices');
-    if (!host) {
-      host = document.createElement('div');
-      host.id = 'notices';
-      host.setAttribute('aria-live', 'polite');
-      document.body.appendChild(host);
-    }
-    return host;
-  };
-  const notify = (message, type = 'success') => {
-    const host = ensureNoticeHost();
-    const el = document.createElement('div');
-    el.className = `notice ${type}`;
-    el.innerHTML = `
-      <div class="d-flex align-items-start gap-2">
-        <div class="flex-grow-1">${message}</div>
-        <button type="button" class="btn-close" aria-label="Close"></button>
-      </div>
-    `;
-    const btn = el.querySelector('button');
-    btn?.addEventListener('click', () => el.remove());
-    host.appendChild(el);
-    setTimeout(() => el.remove(), 5000);
-  };
-
-  // Basic validation for Customer Information
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const companyInput = document.getElementById('company');
-  const clearInvalid = (el) => el && el.classList.remove('is-invalid');
-  const setInvalid = (el) => el && el.classList.add('is-invalid');
-  [nameInput, emailInput, companyInput].forEach(clearInvalid);
-
-  const errors = [];
-  const nameVal = nameInput?.value?.trim() || '';
-  const emailVal = emailInput?.value?.trim() || '';
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
-  if (!nameVal) { setInvalid(nameInput); errors.push('Full Name'); }
-  if (!emailOk) { setInvalid(emailInput); errors.push('Valid Email'); }
-
-  if (errors.length) {
-    notify('Please provide: ' + errors.join(', '), 'error');
+  if (!validateQuoteForm(e.target)) {
     return;
   }
-  const params = new URLSearchParams();
-  params.set('productName', productNameEl?.value || '');
-  params.set('length', lengthEl?.value || '');
-  params.set('width', widthEl?.value || '');
-  params.set('thickness', thicknessEl?.value || '');
-  params.set('height', heightEl?.value || '');
-  params.set('sku', skuEl?.value || '');
-  params.set('family', familyEl?.value || '');
-  params.set('category', categoryEl?.value || '');
-  params.set('company', document.getElementById('company')?.value || '');
-  params.set('name', document.getElementById('name')?.value || '');
-  params.set('email', document.getElementById('email')?.value || '');
-  params.set('phone', document.getElementById('phone')?.value || '');
-  params.set('datasheet', document.querySelector('input[name="datasheet"]:checked')?.value || 'no');
-  params.set('notes', document.getElementById('notes')?.value || '');
-  params.set('customDetails', document.getElementById('customDetails')?.value || '');
+
+  const btn = e.target.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+  const formData = new FormData();
+  formData.append('productName', productNameEl?.value || '');
+  formData.append('company', document.getElementById('company')?.value || '');
+  formData.append('name', document.getElementById('name')?.value || '');
+  formData.append('email', document.getElementById('email')?.value || '');
+  formData.append('phone', document.getElementById('phone')?.value || '');
+  formData.append('datasheet', document.querySelector('input[name="datasheet"]:checked')?.value || 'no');
+  formData.append('notes', document.getElementById('notes')?.value || '');
+  formData.append('captcha', document.getElementById('captchaAnswer')?.value || '');
 
   try {
-    const res = await fetch('process-quote.php', {
+    const response = await fetch('process-quote.php', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString(),
+      body: formData
     });
-    const data = await res.json().catch(() => null);
-    if (res.ok && data?.success) {
-      notify('Thanks! Your request has been sent successfully.', 'success');
-      const formEl = e.target;
-      if (formEl && typeof formEl.reset === 'function') { formEl.reset(); }
+    
+    const data = await response.json();
+    
+    if (data.success) {
+      // Show success message
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-success alert-dismissible fade show';
+      alertDiv.innerHTML = `
+        <i class="fas fa-check-circle"></i> ${data.message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      `;
+      e.target.parentNode.insertBefore(alertDiv, e.target);
+      
+      e.target.reset();
+      // Restore product info after reset
       if (productNameEl) productNameEl.value = productLabel || '';
       if (lengthEl) lengthEl.value = length;
       if (widthEl) widthEl.value = width;
       if (thicknessEl) thicknessEl.value = thickness;
       if (heightEl) heightEl.value = height;
+      generateCaptcha();
     } else {
-      notify((data && data.message) || 'Sorry, there was an error sending your request.', 'error');
+      // Show error message
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-danger alert-dismissible fade show';
+      alertDiv.innerHTML = `
+        <i class="fas fa-exclamation-triangle"></i> ${data.message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      `;
+      e.target.parentNode.insertBefore(alertDiv, e.target);
+      
+      if (data.message.includes('Security check')) {
+        generateCaptcha();
+      }
     }
-  } catch (err) {
-    notify('Network error. Please try again later.', 'error');
+  } catch (error) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-danger alert-dismissible fade show';
+    alertDiv.innerHTML = `
+      <i class="fas fa-exclamation-triangle"></i> Network error. Please check your connection and try again.
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    e.target.parentNode.insertBefore(alertDiv, e.target);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalText;
   }
 });
